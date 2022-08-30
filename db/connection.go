@@ -49,13 +49,13 @@ func Migrate() {
 	db.AutoMigrate(
 		&models.Category{},
 		&models.CreditCard{},
-		&models.Customers{},
+		&models.Customer{},
 		&models.Login{},
 		&models.OrderProduct{},
-		&models.Orders{},
+		&models.Order{},
 		&models.Payment{},
-		&models.Products{},
-		&models.Shippers{},
+		&models.Product{},
+		&models.Shipper{},
 		&models.Subcategory{},
-		&models.Suppliers{})
+		&models.Supplier{})
 }

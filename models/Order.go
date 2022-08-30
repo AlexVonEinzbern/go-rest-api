@@ -6,10 +6,10 @@ import (
 	"gorm.io/gorm"
 )
 
-type Orders struct {
+type Order struct {
 	gorm.Model
 
-	OrderID        string    `gorm:"primaryKey; not null; unique_index"`
+	ID             string    `gorm:"primaryKey; not null; unique_index"`
 	OrderDate      time.Time `gorm:"not null"`
 	RequiredDate   time.Time `gorm:"not null"`
 	ShippedDate    time.Time `gorm:"not null"`

@@ -6,10 +6,10 @@ import (
 	"gorm.io/gorm"
 )
 
-type Customers struct {
+type Customer struct {
 	gorm.Model
 
-	CustomersID string    `gorm:"primaryKey; not null; unique_index"`
+	ID          string    `gorm:"primaryKey; not null; unique_index"`
 	Name        string    `gorm:"not null"`
 	Email       string    `gorm:"not null; unique_index"`
 	DNI         string    `gorm:"not null; unique_index"`
@@ -23,5 +23,5 @@ type Customers struct {
 	Password    string    `gorm:"not null; unique_index"`
 	CreditCards []CreditCard
 	Logins      []Login
-	Orders      []Orders
+	Orders      []Order
 }

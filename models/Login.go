@@ -9,7 +9,7 @@ import (
 type Login struct {
 	gorm.Model
 
-	LoginID     string    `gorm:"primaryKey; not null; unique_index"`
-	DateLogin   time.Time `gorm:"not null"`
-	CustomersID string    `gorm:"not null; unique_index"`
+	ID         string    `gorm:"primaryKey; not null; unique_index"`
+	DateLogin  time.Time `gorm:"not null"`
+	CustomerID string    `gorm:"not null; unique_index"`
 }
