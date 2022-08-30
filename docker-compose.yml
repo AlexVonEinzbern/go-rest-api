@@ -23,23 +23,12 @@ services:
   # backend:
   #   build: 
   #     context: .
-  #     dockerfile: backend-404/Dockerfile
+  #     dockerfile: APIRest/Dockerfile
   #   env_file:
-  #     - backend-404/.env
+  #     - APIRest/.env
   #   ports:
   #     - "5000:5000"
 
-  # frontend:
-  #   container_name: "frontend-404"
-  #   build: ./frontend-404
-  #   # volumes:
-  #   #   - ./product-images:/usr/src/app/product-images
-  #   ports:
-  #     - 3000:3000
-  #   stdin_open: true
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
-  #   command: npm start
 
 volumes:
   db-data:

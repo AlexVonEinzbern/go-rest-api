@@ -5,12 +5,18 @@ import (
 	"os"
 
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 func DBConnection() *gorm.DB {
-	var error error
+
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	Host := os.Getenv("DB_HOST")
 	User := os.Getenv("DB_USER")
@@ -39,7 +45,7 @@ func Migrate() {
 
 	defer sqlDB.Close()
 
-	log.Println("Automigration working....")
+	log.Println("Automigration working...")
 	db.AutoMigrate(
 		&models.Category{},
 		&models.CreditCard{},

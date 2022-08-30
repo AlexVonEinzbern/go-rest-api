@@ -1,9 +1,8 @@
 package main
 
 import (
-
 	"github.com/AlexVonEinzbern/go-rest-api/db"
-	"github.com/AlexVonEinzbern/go-rest-api/routes"
+//	"github.com/AlexVonEinzbern/go-rest-api/routes"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,21 +13,19 @@ import (
 
 // @contact.name AlexVonEinzbern
 // @contact.url https://github.com/AlexVonEinzbern
-// @contact.email mario.diaz@correounivalle.edu.com
+// @contact.email mario.diaz@correounivalle.edu.co
 
 // @license.name Apache 2.0
 
-func setupRouter() *gin.Engine{
+func setupRouter() *gin.Engine {
 	db.Migrate()
 	r := gin.Default()
-
 	//continue...
-	
+
+	return r
 }
 
 func main() {
-
-	db.DBConnection()
-
-
+	r := setupRouter()
+	r.Run(":8080")
 }
