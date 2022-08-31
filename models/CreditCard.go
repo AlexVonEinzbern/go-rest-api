@@ -14,3 +14,8 @@ type CreditCard struct {
 	CustomerID string `gorm:"not null; unique_index"`
 	Payments   []Payment
 }
+
+// TableName overrides the table name used by CredirCard to `credit_card`
+func (CreditCard) TableName() string {
+	return "credit_card"
+}

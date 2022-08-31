@@ -12,3 +12,8 @@ type Category struct {
 	Subcategories []Subcategory
 	Products      []Product
 }
+
+// TableName overrides the table name used by Category to `category`
+func (Category) TableName() string {
+	return "category"
+}

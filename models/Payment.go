@@ -14,3 +14,8 @@ type Payment struct {
 	OrderID      string    `gorm:"not null; unique_index"`
 	CreditCardID string    `gorm:"not null; unique_index"`
 }
+
+// TableName overrides the table name used by Payment to `payment`
+func (Payment) TableName() string {
+	return "payment"
+}

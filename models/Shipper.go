@@ -10,3 +10,8 @@ type Shipper struct {
 	Phone       string `gorm:"not null"`
 	Orders      []Order
 }
+
+// TableName overrides the table name used by Shipper to `shipper`
+func (Shipper) TableName() string {
+	return "shipper"
+}

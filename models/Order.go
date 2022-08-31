@@ -22,3 +22,8 @@ type Order struct {
 	ShipperID      string    `gorm:"not null; unique_index"`
 	Payments       []Payment
 }
+
+// TableName overrides the table name used by Order to `order`
+func (Order) TableName() string {
+	return "order"
+}

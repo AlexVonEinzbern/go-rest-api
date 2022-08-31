@@ -17,3 +17,8 @@ type Product struct {
 	CategoryID      string  `gorm:"not null; unique_index"`
 	Orders          []Order `gorm:"many2many:order_product;"`
 }
+
+// TableName overrides the table name used by Product to `product`
+func (Product) TableName() string {
+	return "product"
+}

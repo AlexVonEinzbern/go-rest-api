@@ -15,3 +15,8 @@ type Supplier struct {
 	HomePage    string `gorm:"not null; unique_index"`
 	Products    []Product
 }
+
+// TableName overrides the table name used by Supplier to `supplier`
+func (Supplier) TableName() string {
+	return "supplier"
+}
