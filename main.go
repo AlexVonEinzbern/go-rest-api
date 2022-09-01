@@ -2,12 +2,17 @@ package main
 
 import (
 	"github.com/AlexVonEinzbern/go-rest-api/db"
-//	"github.com/AlexVonEinzbern/go-rest-api/routes"
+	"github.com/AlexVonEinzbern/go-rest-api/routes"
 	"github.com/gin-gonic/gin"
+
+
+	//_ "github.com/AlexVonEinzbern/go-rest-api/docs"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title go-rest-api
-// @version 0.1
+// @version 1
 // @description ecommerce api-rest with basic CRUD operations (Create, Read, Update and Delete) products, suppliers, etc. Manage automatically invoice and shipping operations
 // @termsOfService http://swagger.io/terms/
 
@@ -20,8 +25,16 @@ import (
 func setupRouter() *gin.Engine {
 	db.Migrate()
 	r := gin.Default()
-	//continue...
+	restapi := r.Group("/go-rest-api")
+	{
+		subcategories := restapi.Group("/subcategories")
+		{
+			subcategories.POST("", routes.CreateSubcategory)
+		}
+	}
 
+	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") //The URL pointing to API definition
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	return r
 }
 

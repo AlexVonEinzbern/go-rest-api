@@ -57,5 +57,6 @@ func Migrate() {
 		&models.Order{},
 		&models.Payment{},
 		&models.Product{},
-		&models.OrderProduct{})
+		&models.OrderProduct{},
+		&models.APIError{})
 }
