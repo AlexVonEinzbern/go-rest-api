@@ -5,7 +5,6 @@ import (
 	"github.com/AlexVonEinzbern/go-rest-api/routes"
 	"github.com/gin-gonic/gin"
 
-
 	_ "github.com/AlexVonEinzbern/go-rest-api/docs"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -30,6 +29,12 @@ func setupRouter() *gin.Engine {
 		subcategories := restapi.Group("/subcategories")
 		{
 			subcategories.POST("", routes.CreateSubcategory)
+		}
+		categories := restapi.Group("/categories")
+		{
+			categories.POST("", routes.CreateCategory)
+			categories.GET("", routes.SearchCategories)
+			categories.GET(":id", routes.SearchCategory)
 		}
 	}
 

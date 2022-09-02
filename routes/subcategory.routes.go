@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/AlexVonEinzbern/go-rest-api/crud"
+	"github.com/AlexVonEinzbern/go-rest-api/controllers"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +13,7 @@ import (
 
 // CreateSubcategory godoc
 // @Summary Create Subcategory
-// @Description create a Subcategory
+// @Description Create a Subcategory
 // @Accept  json
 // @Produce  json
 // @Param subcategory body models.SubcategoryCreate true "Create a subcategory"
@@ -31,5 +31,5 @@ func CreateSubcategory(c *gin.Context) {
 	}
 
 	log.Println("Starting with Subcategory creation: ", createsubcategory)
-	c.IndentedJSON(http.StatusOK, crud.CreateSubcategory(createsubcategory))
+	c.IndentedJSON(http.StatusOK, controllers.CreateSubcategory(createsubcategory))
 }

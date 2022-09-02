@@ -24,9 +24,46 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/go-rest-api/category": {
+            "post": {
+                "description": "Create a Category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create Category",
+                "parameters": [
+                    {
+                        "description": "Create a Category",
+                        "name": "subcategory",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
         "/go-rest-api/subcategory": {
             "post": {
-                "description": "create a Subcategory",
+                "description": "Create a Subcategory",
                 "consumes": [
                     "application/json"
                 ],
@@ -60,6 +97,43 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/go.rest-api/category": {
+            "get": {
+                "description": "Search all catagories in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Categories",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "description": "List all Categories",
+                        "name": "ListCategories",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CategoryResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -70,6 +144,40 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "errorMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CategoryCreate": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CategoryResponse": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "categoryName": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 }
             }
@@ -108,7 +216,7 @@ const docTemplate = `{
                 },
                 "id": {
                     "description": "` + "`" + `gorm:\"primaryKey\"` + "`" + `",
-                    "type": "integer"
+                    "type": "string"
                 },
                 "subCategoryName": {
                     "type": "string"

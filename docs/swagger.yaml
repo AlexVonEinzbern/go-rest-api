@@ -6,6 +6,28 @@ definitions:
       errorMessage:
         type: string
     type: object
+  models.CategoryCreate:
+    properties:
+      active:
+        type: boolean
+      categoryName:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+    type: object
+  models.CategoryResponse:
+    properties:
+      active:
+        type: boolean
+      categoryName:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+    type: object
   models.SubcategoryCreate:
     properties:
       active:
@@ -29,7 +51,7 @@ definitions:
         type: string
       id:
         description: '`gorm:"primaryKey"`'
-        type: integer
+        type: string
       subCategoryName:
         type: string
     type: object
@@ -47,11 +69,35 @@ info:
   title: go-rest-api
   version: "1"
 paths:
+  /go-rest-api/category:
+    post:
+      consumes:
+      - application/json
+      description: Create a Category
+      parameters:
+      - description: Create a Category
+        in: body
+        name: subcategory
+        required: true
+        schema:
+          $ref: '#/definitions/models.CategoryCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CategoryResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Category
   /go-rest-api/subcategory:
     post:
       consumes:
       - application/json
-      description: create a Subcategory
+      description: Create a Subcategory
       parameters:
       - description: Create a subcategory
         in: body
@@ -71,4 +117,28 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Subcategory
+  /go.rest-api/category:
+    get:
+      consumes:
+      - application/json
+      description: Search all catagories in the DataBase
+      parameters:
+      - description: List all Categories
+        in: query
+        name: ListCategories
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CategoryResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Categories
 swagger: "2.0"

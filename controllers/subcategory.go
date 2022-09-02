@@ -1,4 +1,4 @@
-package crud
+package controllers
 
 import (
 	"log"
