@@ -11,12 +11,12 @@ import (
 
 // @BasePath /api/v1
 
-// createsubcategory godoc
+// CreateSubcategory godoc
 // @Summary Create Subcategory
 // @Description create a Subcategory
 // @Accept  json
 // @Produce  json
-// @Param subcategory body models.SubcategoryCreate true "Create subcategory"
+// @Param subcategory body models.SubcategoryCreate true "Create a subcategory"
 // @Success 200 {object} models.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/subcategory [post]

@@ -8,11 +8,14 @@ import (
 )
 
 func CreateSubcategory(createsubcategory models.SubcategoryCreate) models.Subcategory {
+
 	subcategory := models.Subcategory{
 		ID: createsubcategory.ID,
-		SubcategoryBase: models.SubcategoryBase{ SubCategoryName: createsubcategory.SubCategoryName, 
-			Description: createsubcategory.Description, Active: createsubcategory.Active},	
-	}
+		SubcategoryBase: models.SubcategoryBase{
+			SubCategoryName: createsubcategory.SubCategoryName,
+			Description:     createsubcategory.Description,
+			Active:          createsubcategory.Active}}
+
 	conn := db.DBConnection()
 	sqlconn, err := conn.DB()
 
@@ -26,11 +29,11 @@ func CreateSubcategory(createsubcategory models.SubcategoryCreate) models.Subcat
 
 	result := conn.Create(&subcategory)
 
-    if result.Error != nil {
-        log.Fatal(result.Error)
-    }
+	if result.Error != nil {
+		log.Fatal(result.Error)
+	}
 
-    log.Println("This is the record inserted: ", subcategory)
+	log.Println("This is the record inserted: ", subcategory)
 
-    return subcategory
+	return subcategory
 }

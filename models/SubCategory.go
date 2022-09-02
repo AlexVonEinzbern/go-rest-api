@@ -17,21 +17,16 @@ type Subcategory struct {
 }
 
 type SubcategoryCreate struct {
-	ID string //`gorm:"primaryKey; not null; unique_index"`
+	ID string `gorm:"primaryKey; not null; unique_index"`
 	SubcategoryBase
 }
 
 type SubcategoryResponse struct {
-	Subcategory
-	ID uint //`gorm:"primaryKey"`
+	SubcategoryBase
+	ID string //`gorm:"primaryKey"`
 }
 
 // TableName overrides the table name used by Subcategory to `subcategory`
 func (Subcategory) TableName() string {
 	return "subcategory"
-}
-
-// TableName overrides the table name used by SubcategoryResponse to `subcategory_response`
-func (SubcategoryResponse) TableName() string {
-	return "subcategory_response"
 }

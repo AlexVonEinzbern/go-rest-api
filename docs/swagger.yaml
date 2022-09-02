@@ -1,0 +1,74 @@
+definitions:
+  models.APIError:
+    properties:
+      errorCode:
+        type: integer
+      errorMessage:
+        type: string
+    type: object
+  models.SubcategoryCreate:
+    properties:
+      active:
+        type: boolean
+      categoryID:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      subCategoryName:
+        type: string
+    type: object
+  models.SubcategoryResponse:
+    properties:
+      active:
+        type: boolean
+      categoryID:
+        type: string
+      description:
+        type: string
+      id:
+        description: '`gorm:"primaryKey"`'
+        type: integer
+      subCategoryName:
+        type: string
+    type: object
+info:
+  contact:
+    email: mario.diaz@correounivalle.edu.co
+    name: AlexVonEinzbern
+    url: https://github.com/AlexVonEinzbern
+  description: ecommerce api-rest with basic CRUD operations (Create, Read, Update
+    and Delete) products, suppliers, etc. Manage automatically invoice and shipping
+    operations
+  license:
+    name: Apache 2.0
+  termsOfService: http://swagger.io/terms/
+  title: go-rest-api
+  version: "1"
+paths:
+  /go-rest-api/subcategory:
+    post:
+      consumes:
+      - application/json
+      description: create a Subcategory
+      parameters:
+      - description: Create a subcategory
+        in: body
+        name: subcategory
+        required: true
+        schema:
+          $ref: '#/definitions/models.SubcategoryCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SubcategoryResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Subcategory
+swagger: "2.0"
