@@ -35,6 +35,7 @@ func setupRouter() *gin.Engine {
 			categories.POST("", routes.CreateCategory)
 			categories.GET("", routes.SearchCategories)
 			categories.GET(":id", routes.SearchCategory)
+			categories.PATCH(":id", routes.UpdateCategory)
 		}
 	}
 

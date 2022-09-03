@@ -88,3 +88,40 @@ func SearchCategory(id string) (models.Category, error) {
 
 	return category, result.Error
 }
+
+func UpdateCategory(id string, categoryUpdate map[string]interface{}) (models.Category, error) {
+	var category models.Category
+
+	conn := db.DBConnection()
+	sqlconn, err := conn.DB()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer sqlconn.Close()
+
+	log.Println("Starting with category update")
+
+	if err := conn.First(&category, "id = ?", id).Error; err != nil {
+		log.Println("DB error ", err)
+		return category, err
+
+	}
+
+	if CategoryName := categoryUpdate["CategoryName"].(string); CategoryName == "" {
+		categoryUpdate["CategoryName"] = category.CategoryName
+	}
+
+	if Description := categoryUpdate["Description"].(string); Description == "" {
+		categoryUpdate["Description"] = category.Description
+	}
+
+	result := conn.Model(&category).Updates(categoryUpdate)
+	//.Updates(characterUpdate)
+
+	if result.Error != nil {
+		log.Println("DB error ", result.Error)
+		return category, result.Error
+	}
+
+	return category, result.Error
+}

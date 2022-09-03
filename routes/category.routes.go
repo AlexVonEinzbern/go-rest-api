@@ -86,7 +86,20 @@ func UpdateCategory(c *gin.Context) {
 
 	id := c.Param("id")
 
-	log.Println("Category to be update: ", updatecategory)
+	// TODO: Json validation
+	if err_bind := c.BindJSON(&updatecategory); err_bind != nil {
+		c.IndentedJSON(http.StatusBadRequest, models.APIError{ErrorCode: 401, ErrorMessage: err_bind.Error()})
+		return
+	}
+
+	log.Println("Data to be update: ", updatecategory)
 
 	category, err := controllers.UpdateCategory(id, structs.Map(updatecategory))
+
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
+		return
+	}
+
+	c.IndentedJSON(http.StatusOK, category)
 }
