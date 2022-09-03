@@ -63,8 +63,8 @@ func SearchCategories() []models.Category {
 	return categories
 }
 
-func SearchCategory(id string) (models.Category, error) {
-	var category models.Category
+func SearchCategoriesActive() []models.Category {
+	var categories []models.Category
 
 	conn := db.DBConnection()
 	sqlconn, err := conn.DB()
@@ -75,18 +75,17 @@ func SearchCategory(id string) (models.Category, error) {
 
 	defer sqlconn.Close()
 
-	log.Println("Seaching category by id...")
+	log.Println("Seaching category by active...")
 
-	result := conn.First(&category, "id = ?", id)
+	result := conn.Where("Active = ?", true).Find(&categories)
 
 	if result.Error != nil {
 		log.Fatal(result.Error)
-		return category, result.Error
 	}
 
-	log.Println("Found record: ", category)
+	log.Println("Records found: ", categories)
 
-	return category, result.Error
+	return categories
 }
 
 func UpdateCategory(id string, categoryUpdate map[string]interface{}) (models.Category, error) {
@@ -122,6 +121,32 @@ func UpdateCategory(id string, categoryUpdate map[string]interface{}) (models.Ca
 		log.Println("DB error ", result.Error)
 		return category, result.Error
 	}
+
+	return category, result.Error
+}
+
+func DeleteCategory(id string) (models.Category, error) {
+	var category models.Category
+
+	conn := db.DBConnection()
+	sqlconn, err := conn.DB()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer sqlconn.Close()
+
+	log.Println("Starting with category delete")
+
+	result := conn.Delete(&category, "id = ?", id)
+
+	if result.Error != nil {
+		log.Println("DB error", result.Error)
+		return category, result.Error
+	}
+
+	log.Println("Category deleted: ", category)
 
 	return category, result.Error
 }

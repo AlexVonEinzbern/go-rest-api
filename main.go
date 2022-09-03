@@ -33,9 +33,10 @@ func setupRouter() *gin.Engine {
 		categories := restapi.Group("/categories")
 		{
 			categories.POST("", routes.CreateCategory)
-			categories.GET("", routes.SearchCategories)
-			categories.GET(":id", routes.SearchCategory)
+			categories.GET("", routes.SearchAllCategories)
+			categories.GET("/active", routes.SearchActiveCategory)
 			categories.PATCH(":id", routes.UpdateCategory)
+			categories.DELETE(":id", routes.DeleteCategoty)
 		}
 	}
 

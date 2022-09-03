@@ -17,10 +17,10 @@ import (
 // @Description Create a Category
 // @Accept  json
 // @Produce  json
-// @Param subcategory body models.CategoryCreate true "Create a Category"
+// @Param category body models.CategoryCreate true "Category type"
 // @Success 200 {object} models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/category [post]
+// @Router /go-rest-api/categories [post]
 func CreateCategory(c *gin.Context) {
 
 	var createcategory models.CategoryCreate
@@ -40,35 +40,27 @@ func CreateCategory(c *gin.Context) {
 // @Description Search all catagories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param ListCategories query array false "List all Categories"
+// @Param empty query array false "empty"
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go.rest-api/category [get]
-func SearchCategories(c *gin.Context) {
+// @Router /go-rest-api/categories [get]
+func SearchAllCategories(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchCategories())
 }
 
 // SearchCategory godoc
-// @Summary Search Category
-// @Description Search category by id in the DataBase
+// @Summary Search active Categories
+// @Description Search active categories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path int true "Category id"
+// @Param empty query array false "empty"
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go.rest-api/category/{id} [get]
-func SearchCategory(c *gin.Context) {
-	id := c.Param("id")
+// @Router /go-rest-api/categories/active [get]
+func SearchActiveCategory(c *gin.Context) {
 
-	category, err := controllers.SearchCategory(id)
-
-	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
-		return
-	}
-
-	c.IndentedJSON(http.StatusOK, category)
+	c.IndentedJSON(http.StatusOK, controllers.SearchCategoriesActive())
 }
 
 // UpdateCategory godoc
@@ -76,17 +68,16 @@ func SearchCategory(c *gin.Context) {
 // @Description Update a category by id
 // @Accept  json
 // @Produce  json
-// @Param id path int true "Category ID"
-// @Param category body models.CategoryCreate true "Update category"
+// @Param id path string true "Category ID"
+// @Param category body models.CategoryCreate true "Category type"
 // @Success 204 {object} models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/category/{id} [patch]
+// @Router /go-rest-api/categories/{id} [patch]
 func UpdateCategory(c *gin.Context) {
 	var updatecategory models.CategoryBase
 
 	id := c.Param("id")
 
-	// TODO: Json validation
 	if err_bind := c.BindJSON(&updatecategory); err_bind != nil {
 		c.IndentedJSON(http.StatusBadRequest, models.APIError{ErrorCode: 401, ErrorMessage: err_bind.Error()})
 		return
@@ -102,4 +93,26 @@ func UpdateCategory(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusOK, category)
+}
+
+// DeleteCategory godoc
+// @Summary Delete Category by id
+// @Description Delete a category by id
+// @Accept  json
+// @Produce  json
+// @Param id path int true "Category ID"
+// @Success 204 {object} models.CategoryResponse
+// @Failure 404 {object} models.APIError "Can not find objects"
+// @Router /go-rest-api/categories/{id} [delete]
+func DeleteCategoty(c *gin.Context) {
+	id := c.Param("id")
+
+	category, err := controllers.DeleteCategory(id)
+
+	if err != nil {
+		c.IndentedJSON(http.StatusOK, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
+		return
+	}
+
+	c.IndentedJSON(http.StatusNoContent, category)
 }

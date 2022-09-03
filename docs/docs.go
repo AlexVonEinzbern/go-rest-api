@@ -24,7 +24,42 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/go-rest-api/category": {
+        "/go-rest-api/categories": {
+            "get": {
+                "description": "Search all catagories in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Categories",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "description": "empty",
+                        "name": "empty",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CategoryResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
             "post": {
                 "description": "Create a Category",
                 "consumes": [
@@ -36,8 +71,8 @@ const docTemplate = `{
                 "summary": "Create Category",
                 "parameters": [
                     {
-                        "description": "Create a Category",
-                        "name": "subcategory",
+                        "description": "Category type",
+                        "name": "category",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -61,7 +96,77 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/category/{id}": {
+        "/go-rest-api/categories/active": {
+            "get": {
+                "description": "Search active categories in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search active Categories",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "description": "empty",
+                        "name": "empty",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CategoryResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/categories/{id}": {
+            "delete": {
+                "description": "Delete a category by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete Category by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Category ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoryResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
             "patch": {
                 "description": "Update a category by id",
                 "consumes": [
@@ -73,14 +178,14 @@ const docTemplate = `{
                 "summary": "Update Category by id",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Category ID",
                         "name": "id",
                         "in": "path",
                         "required": true
                     },
                     {
-                        "description": "Update category",
+                        "description": "Category type",
                         "name": "category",
                         "in": "body",
                         "required": true,
@@ -131,81 +236,6 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.SubcategoryResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Can not find objects",
-                        "schema": {
-                            "$ref": "#/definitions/models.APIError"
-                        }
-                    }
-                }
-            }
-        },
-        "/go.rest-api/category": {
-            "get": {
-                "description": "Search all catagories in the DataBase",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "Search Categories",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "description": "List all Categories",
-                        "name": "ListCategories",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.CategoryResponse"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Can not find objects",
-                        "schema": {
-                            "$ref": "#/definitions/models.APIError"
-                        }
-                    }
-                }
-            }
-        },
-        "/go.rest-api/category/{id}": {
-            "get": {
-                "description": "Search category by id in the DataBase",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "Search Category",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "Category id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.CategoryResponse"
-                            }
                         }
                     },
                     "404": {
