@@ -50,7 +50,6 @@ definitions:
       description:
         type: string
       id:
-        description: '`gorm:"primaryKey"`'
         type: string
       subCategoryName:
         type: string
@@ -74,11 +73,6 @@ paths:
       consumes:
       - application/json
       description: Search all catagories in the DataBase
-      parameters:
-      - description: empty
-        in: query
-        name: empty
-        type: array
       produces:
       - application/json
       responses:
@@ -122,18 +116,17 @@ paths:
       - application/json
       description: Delete a category by id
       parameters:
-      - description: Category ID
+      - default: cabckbalgaLJHALncas
+        description: Category ID
         in: path
         name: id
         required: true
-        type: integer
+        type: string
       produces:
       - application/json
       responses:
         "204":
           description: No Content
-          schema:
-            $ref: '#/definitions/models.CategoryResponse'
         "404":
           description: Can not find objects
           schema:
@@ -144,17 +137,12 @@ paths:
       - application/json
       description: Update a category by id
       parameters:
-      - description: Category ID
+      - default: cabckbalgaLJHALncas
+        description: Category ID
         in: path
         name: id
         required: true
         type: string
-      - description: Category type
-        in: body
-        name: category
-        required: true
-        schema:
-          $ref: '#/definitions/models.CategoryCreate'
       produces:
       - application/json
       responses:
@@ -172,11 +160,6 @@ paths:
       consumes:
       - application/json
       description: Search active categories in the DataBase
-      parameters:
-      - description: empty
-        in: query
-        name: empty
-        type: array
       produces:
       - application/json
       responses:

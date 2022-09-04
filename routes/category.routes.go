@@ -40,7 +40,6 @@ func CreateCategory(c *gin.Context) {
 // @Description Search all catagories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param empty query array false "empty"
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/categories [get]
@@ -54,7 +53,6 @@ func SearchAllCategories(c *gin.Context) {
 // @Description Search active categories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param empty query array false "empty"
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/categories/active [get]
@@ -68,8 +66,7 @@ func SearchActiveCategory(c *gin.Context) {
 // @Description Update a category by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Category ID"
-// @Param category body models.CategoryCreate true "Category type"
+// @Param id path string true "Category ID" default(cabckbalgaLJHALncas)
 // @Success 204 {object} models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/categories/{id} [patch]
@@ -100,8 +97,8 @@ func UpdateCategory(c *gin.Context) {
 // @Description Delete a category by id
 // @Accept  json
 // @Produce  json
-// @Param id path int true "Category ID"
-// @Success 204 {object} models.CategoryResponse
+// @Param id path string true "Category ID" default(cabckbalgaLJHALncas)
+// @Success 204 
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/categories/{id} [delete]
 func DeleteCategoty(c *gin.Context) {

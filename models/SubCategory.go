@@ -23,7 +23,7 @@ type SubcategoryCreate struct {
 
 type SubcategoryResponse struct {
 	SubcategoryBase
-	ID string //`gorm:"primaryKey"`
+	ID string 
 }
 
 // TableName overrides the table name used by Subcategory to `subcategory`

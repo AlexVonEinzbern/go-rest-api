@@ -34,14 +34,6 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "summary": "Search Categories",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "description": "empty",
-                        "name": "empty",
-                        "in": "query"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -106,14 +98,6 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "summary": "Search active Categories",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "description": "empty",
-                        "name": "empty",
-                        "in": "query"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -145,7 +129,8 @@ const docTemplate = `{
                 "summary": "Delete Category by id",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
                         "description": "Category ID",
                         "name": "id",
                         "in": "path",
@@ -154,10 +139,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "204": {
-                        "description": "No Content",
-                        "schema": {
-                            "$ref": "#/definitions/models.CategoryResponse"
-                        }
+                        "description": "No Content"
                     },
                     "404": {
                         "description": "Can not find objects",
@@ -179,19 +161,11 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
+                        "default": "cabckbalgaLJHALncas",
                         "description": "Category ID",
                         "name": "id",
                         "in": "path",
                         "required": true
-                    },
-                    {
-                        "description": "Category type",
-                        "name": "category",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.CategoryCreate"
-                        }
                     }
                 ],
                 "responses": {
@@ -327,7 +301,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "id": {
-                    "description": "` + "`" + `gorm:\"primaryKey\"` + "`" + `",
                     "type": "string"
                 },
                 "subCategoryName": {
