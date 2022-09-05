@@ -7,8 +7,6 @@ import (
 )
 
 type OrderBase struct {
-	gorm.Model
-
 	OrderDate      time.Time `gorm:"not null"`
 	RequiredDate   time.Time `gorm:"not null"`
 	ShippedDate    time.Time `gorm:"not null"`

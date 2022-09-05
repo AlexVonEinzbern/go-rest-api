@@ -7,8 +7,6 @@ import (
 )
 
 type LoginBase struct {
-	gorm.Model
-
 	DateLogin  time.Time `gorm:"not null"`
 	CustomerID string    `gorm:"not null; unique_index"`
 }
