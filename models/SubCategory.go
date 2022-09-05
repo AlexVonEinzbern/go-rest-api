@@ -17,7 +17,7 @@ type Subcategory struct {
 }
 
 type SubcategoryCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
+	ID string 
 	SubcategoryBase
 }
 

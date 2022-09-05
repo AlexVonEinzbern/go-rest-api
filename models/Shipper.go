@@ -2,13 +2,26 @@ package models
 
 import "gorm.io/gorm"
 
-type Shipper struct {
-	gorm.Model
-
-	ID          string `gorm:"primaryKey; not null; unique_index"`
+type ShipperBase struct {
 	CompanyName string `gorm:"not null; unique_index"`
 	Phone       string `gorm:"not null"`
-	Orders      []Order
+}
+
+type Shipper struct {
+	gorm.Model
+	ID string `gorm:"primaryKey; not null; unique_index"`
+	ShipperBase
+	Orders []Order
+}
+
+type ShipperCreate struct {
+	ID string `gorm:"primaryKey; not null; unique_index"`
+	ShipperBase
+}
+
+type ShipperResponse struct {
+	ShipperBase
+	ID string
 }
 
 // TableName overrides the table name used by Shipper to `shipper`

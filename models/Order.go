@@ -6,10 +6,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type Order struct {
+type OrderBase struct {
 	gorm.Model
 
-	ID             string    `gorm:"primaryKey; not null; unique_index"`
 	OrderDate      time.Time `gorm:"not null"`
 	RequiredDate   time.Time `gorm:"not null"`
 	ShippedDate    time.Time `gorm:"not null"`
@@ -20,7 +19,23 @@ type Order struct {
 	ShipCountry    string    `gorm:"not null"`
 	CustomerID     string    `gorm:"not null; unique_index"`
 	ShipperID      string    `gorm:"not null; unique_index"`
-	Payments       []Payment
+}
+
+type Order struct {
+	gorm.Model
+	ID string `gorm:"primaryKey; not null; unique_index"`
+	OrderBase
+	Payments []Payment
+}
+
+type OrderCreate struct {
+	ID string `gorm:"primaryKey; not null; unique_index"`
+	OrderBase
+}
+
+type OrderResponse struct {
+	OrderBase
+	ID string
 }
 
 // TableName overrides the table name used by Order to `order`
