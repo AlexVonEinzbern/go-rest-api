@@ -107,6 +107,32 @@ definitions:
       shipperID:
         type: string
     type: object
+  models.OrderProductCreate:
+    properties:
+      discount:
+        type: number
+      orderID:
+        type: string
+      productID:
+        type: string
+      quantity:
+        type: integer
+      unitPrice:
+        type: number
+    type: object
+  models.OrderProductResponse:
+    properties:
+      discount:
+        type: number
+      orderID:
+        type: string
+      productID:
+        type: string
+      quantity:
+        type: integer
+      unitPrice:
+        type: number
+    type: object
   models.OrderResponse:
     properties:
       customerID:
@@ -365,7 +391,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Search Customer by id in the DataBase
+      description: Search active categories in the DataBase
       produces:
       - application/json
       responses:
@@ -379,7 +405,7 @@ paths:
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
-      summary: Search Customer by id
+      summary: Search all active Categories
   /go-rest-api/customers:
     get:
       consumes:
@@ -444,6 +470,24 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete Customer by id
+    get:
+      consumes:
+      - application/json
+      description: Search Customer by id in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CategoryResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Customer by id
     patch:
       consumes:
       - application/json
@@ -467,6 +511,67 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Customer by id
+  /go-rest-api/orderproducts:
+    get:
+      consumes:
+      - application/json
+      description: Search all orderproducts in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.OrderProductResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all OrderProducts
+    post:
+      consumes:
+      - application/json
+      description: Create a OrderProduct
+      parameters:
+      - description: OrderProduct type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderProductCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OrderProductResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create OrderProduct
+  /go-rest-api/orderproducts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Search OrderProduct by id in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.OrderProductResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search OrderProduct by id
   /go-rest-api/orders:
     get:
       consumes:

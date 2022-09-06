@@ -53,6 +53,7 @@ func SearchCustomers(c *gin.Context) {
 }
 
 //TODO: Implement SearchCustomer
+
 // SearchCustomer godoc
 // @Summary Search Customer by id
 // @Description Search Customer by id in the DataBase
@@ -60,7 +61,7 @@ func SearchCustomers(c *gin.Context) {
 // @Produce  json
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/categories/active [get]
+// @Router /go-rest-api/customers/{id} [get]
 func SearchCustomer(c *gin.Context) {
 
     id := c.Param("id")
