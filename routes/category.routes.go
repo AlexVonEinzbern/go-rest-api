@@ -35,7 +35,7 @@ func CreateCategory(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, controllers.CreateCategory(createcategory))
 }
 
-// SearchAllCategories godoc
+// SearchCategories godoc
 // @Summary Search all Categories
 // @Description Search all catagories in the DataBase
 // @Accept  json

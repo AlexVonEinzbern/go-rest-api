@@ -178,6 +178,24 @@ definitions:
       unitsOnOrder:
         type: integer
     type: object
+  models.ShipperCreate:
+    properties:
+      companyName:
+        type: string
+      id:
+        type: string
+      phone:
+        type: string
+    type: object
+  models.ShipperResponse:
+    properties:
+      companyName:
+        type: string
+      id:
+        type: string
+      phone:
+        type: string
+    type: object
   models.SubcategoryCreate:
     properties:
       active:
@@ -597,6 +615,93 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all active Products
+  /go-rest-api/shippers:
+    get:
+      consumes:
+      - application/json
+      description: Search all shippers in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ShipperResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Shippers
+    post:
+      consumes:
+      - application/json
+      description: Create a Shipper
+      parameters:
+      - description: Shipper type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.ShipperCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ShipperResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Shipper
+  /go-rest-api/shippers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a shipper by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Shipper ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete Shipper by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a shipper by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Shipper ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.ShipperResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update Shipper by id
   /go-rest-api/subcategories:
     get:
       consumes:
