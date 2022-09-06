@@ -43,8 +43,8 @@ func CreateSupplier(createsupplier models.SupplierCreate) models.Supplier {
 	return supplier
 }
 
-//TODO: Implement SearchAllSuppliers
-func SearchAllSuppliers() []models.Supplier {
+//TODO: Implement SearchSuppliers
+func SearchSuppliers() []models.Supplier {
 	var suppliers []models.Supplier
 
 	conn := db.DBConnection()

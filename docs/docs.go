@@ -90,14 +90,14 @@ const docTemplate = `{
         },
         "/go-rest-api/categories/active": {
             "get": {
-                "description": "Search active categories in the DataBase",
+                "description": "Search Customer by id in the DataBase",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Search all active Categories",
+                "summary": "Search Customer by id",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -173,6 +173,137 @@ const docTemplate = `{
                         "description": "No Content",
                         "schema": {
                             "$ref": "#/definitions/models.CategoryResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/customers": {
+            "get": {
+                "description": "Search all customers in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search all Customers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CustomerResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create Customer",
+                "parameters": [
+                    {
+                        "description": "Customer type",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CustomerCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CustomerResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/customers/{id}": {
+            "delete": {
+                "description": "Delete a customer by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update a customer by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/models.CustomerResponse"
                         }
                     },
                     "404": {
@@ -678,6 +809,88 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CustomerCreate": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "dni": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CustomerResponse": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "dni": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "userName": {
                     "type": "string"
                 }
             }

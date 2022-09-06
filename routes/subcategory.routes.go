@@ -43,7 +43,7 @@ func CreateSubcategory(c *gin.Context) {
 // @Success 200 {object} []models.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/subcategories [get]
-func SearchAllSubcategories(c *gin.Context) {
+func SearchSubcategories(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchSubcategories())
 }

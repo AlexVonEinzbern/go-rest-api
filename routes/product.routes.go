@@ -43,7 +43,7 @@ func CreateProduct(c *gin.Context) {
 // @Success 200 {object} []models.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/products [get]
-func SearchAllProducts(c *gin.Context) {
+func SearchProducts(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchProducts())
 }

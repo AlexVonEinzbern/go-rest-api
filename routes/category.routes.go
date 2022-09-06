@@ -43,7 +43,7 @@ func CreateCategory(c *gin.Context) {
 // @Success 200 {object} []models.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/categories [get]
-func SearchAllCategories(c *gin.Context) {
+func SearchCategories(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchCategories())
 }

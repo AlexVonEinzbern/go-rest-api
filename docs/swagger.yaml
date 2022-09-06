@@ -28,6 +28,60 @@ definitions:
       id:
         type: string
     type: object
+  models.CustomerCreate:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      dni:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      postalCode:
+        type: string
+      userName:
+        type: string
+    type: object
+  models.CustomerResponse:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      dni:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      postalCode:
+        type: string
+      userName:
+        type: string
+    type: object
   models.ProductCreate:
     properties:
       categoryID:
@@ -243,7 +297,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Search active categories in the DataBase
+      description: Search Customer by id in the DataBase
       produces:
       - application/json
       responses:
@@ -257,7 +311,94 @@ paths:
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
-      summary: Search all active Categories
+      summary: Search Customer by id
+  /go-rest-api/customers:
+    get:
+      consumes:
+      - application/json
+      description: Search all customers in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CustomerResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Customers
+    post:
+      consumes:
+      - application/json
+      description: Create a Customer
+      parameters:
+      - description: Customer type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CustomerResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Customer
+  /go-rest-api/customers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a customer by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete Customer by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a customer by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.CustomerResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update Customer by id
   /go-rest-api/products:
     get:
       consumes:

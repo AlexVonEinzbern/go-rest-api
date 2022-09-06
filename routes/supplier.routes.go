@@ -47,9 +47,9 @@ func CreateSupplier(c *gin.Context) {
 // @Success 200 {object} []models.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/suppliers [get]
-func SearchAllSuppliers(c *gin.Context) {
+func SearchSuppliers(c *gin.Context) {
 
-	c.IndentedJSON(http.StatusOK, controllers.SearchAllSuppliers())
+	c.IndentedJSON(http.StatusOK, controllers.SearchSuppliers())
 }
 
 //TODO: Implement UpdateSupplier
