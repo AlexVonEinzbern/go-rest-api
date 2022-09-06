@@ -28,6 +28,52 @@ definitions:
       id:
         type: string
     type: object
+  models.ProductCreate:
+    properties:
+      categoryID:
+        type: string
+      discontinued:
+        type: boolean
+      id:
+        type: string
+      productName:
+        type: string
+      quantity:
+        type: integer
+      quantityPerUnit:
+        type: string
+      reorderLevel:
+        type: integer
+      supplierID:
+        type: string
+      unitsInStock:
+        type: integer
+      unitsOnOrder:
+        type: integer
+    type: object
+  models.ProductResponse:
+    properties:
+      categoryID:
+        type: string
+      discontinued:
+        type: boolean
+      id:
+        type: string
+      productName:
+        type: string
+      quantity:
+        type: integer
+      quantityPerUnit:
+        type: string
+      reorderLevel:
+        type: integer
+      supplierID:
+        type: string
+      unitsInStock:
+        type: integer
+      unitsOnOrder:
+        type: integer
+    type: object
   models.SubcategoryCreate:
     properties:
       active:
@@ -52,6 +98,44 @@ definitions:
       id:
         type: string
       subCategoryName:
+        type: string
+    type: object
+  models.SupplierCreate:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      companyName:
+        type: string
+      country:
+        type: string
+      homePage:
+        type: string
+      id:
+        type: string
+      phone:
+        type: string
+      postalCode:
+        type: string
+    type: object
+  models.SupplierResponse:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      companyName:
+        type: string
+      country:
+        type: string
+      homePage:
+        type: string
+      id:
+        type: string
+      phone:
+        type: string
+      postalCode:
         type: string
     type: object
 info:
@@ -86,7 +170,7 @@ paths:
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
-      summary: Search Categories
+      summary: Search all Categories
     post:
       consumes:
       - application/json
@@ -173,8 +257,132 @@ paths:
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
-      summary: Search active Categories
-  /go-rest-api/subcategory:
+      summary: Search all active Categories
+  /go-rest-api/products:
+    get:
+      consumes:
+      - application/json
+      description: Search all products in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ProductResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Products
+    post:
+      consumes:
+      - application/json
+      description: Create a Product
+      parameters:
+      - description: Product type
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ProductResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Product
+  /go-rest-api/products/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a product by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Product ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete a Product by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a product by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Product ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.ProductResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update Product by id
+  /go-rest-api/products/active:
+    get:
+      consumes:
+      - application/json
+      description: Search all active products in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ProductResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all active Products
+  /go-rest-api/subcategories:
+    get:
+      consumes:
+      - application/json
+      description: Search all subcatagories in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SubcategoryResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Subcategories
     post:
       consumes:
       - application/json
@@ -198,4 +406,155 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Subcategory
+  /go-rest-api/subcategories/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a subcategory by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Subcategory ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete a Subcategory by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a subcategory by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Subcategory ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.SubcategoryResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update Subcategory by id
+  /go-rest-api/subcategories/active:
+    get:
+      consumes:
+      - application/json
+      description: Search all active categories in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SubcategoryResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all active Subcategories
+  /go-rest-api/suppliers:
+    get:
+      consumes:
+      - application/json
+      description: Search all suppliers in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.SupplierResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Suppliers
+    post:
+      consumes:
+      - application/json
+      description: Create a Supplier
+      parameters:
+      - description: Supplier type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.SupplierCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SupplierResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Supplier
+  /go-rest-api/suppliers/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a supplier by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Supplier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete Supplier by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a supplier by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Supplier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.SupplierResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update Supplier by id
 swagger: "2.0"

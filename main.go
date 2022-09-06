@@ -29,6 +29,10 @@ func setupRouter() *gin.Engine {
 		subcategories := restapi.Group("/subcategories")
 		{
 			subcategories.POST("", routes.CreateSubcategory)
+			subcategories.GET("", routes.SearchAllSubcategories)
+			subcategories.GET("/active", routes.SearchActiveSubcategory)
+			subcategories.PATCH(":id", routes.UpdateSubcategory)
+			subcategories.DELETE(":id", routes.DeleteSubcategoty)
 		}
 		categories := restapi.Group("/categories")
 		{
@@ -37,6 +41,21 @@ func setupRouter() *gin.Engine {
 			categories.GET("/active", routes.SearchActiveCategory)
 			categories.PATCH(":id", routes.UpdateCategory)
 			categories.DELETE(":id", routes.DeleteCategoty)
+		}
+		products := restapi.Group("/products")
+		{
+			products.POST("", routes.CreateProduct)
+			products.GET("", routes.SearchAllProducts)
+			products.GET("/active", routes.SearchActiveProducts)
+			products.PATCH(":id", routes.UpdateProduct)
+			products.DELETE(":id", routes.DeleteProduct)
+		}
+		suppliers := restapi.Group("/suppliers")
+		{
+			suppliers.POST("", routes.CreateSupplier)
+			suppliers.GET("", routes.SearchAllSuppliers)
+			suppliers.PATCH(":id", routes.UpdateSupplier)
+			suppliers.DELETE(":id", routes.DeleteSupplier)
 		}
 	}
 
