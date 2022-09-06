@@ -82,6 +82,56 @@ definitions:
       userName:
         type: string
     type: object
+  models.OrderCreate:
+    properties:
+      customerID:
+        type: string
+      id:
+        type: string
+      orderDate:
+        type: string
+      requiredDate:
+        type: string
+      shipAddress:
+        type: string
+      shipCity:
+        type: string
+      shipCountry:
+        type: string
+      shipName:
+        type: string
+      shipPostalCode:
+        type: string
+      shippedDate:
+        type: string
+      shipperID:
+        type: string
+    type: object
+  models.OrderResponse:
+    properties:
+      customerID:
+        type: string
+      id:
+        type: string
+      orderDate:
+        type: string
+      requiredDate:
+        type: string
+      shipAddress:
+        type: string
+      shipCity:
+        type: string
+      shipCountry:
+        type: string
+      shipName:
+        type: string
+      shipPostalCode:
+        type: string
+      shippedDate:
+        type: string
+      shipperID:
+        type: string
+    type: object
   models.ProductCreate:
     properties:
       categoryID:
@@ -399,6 +449,48 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Customer by id
+  /go-rest-api/orders:
+    get:
+      consumes:
+      - application/json
+      description: Search all orders in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.OrderResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all Orders
+    post:
+      consumes:
+      - application/json
+      description: Create a Order
+      parameters:
+      - description: Order type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OrderResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Order
   /go-rest-api/products:
     get:
       consumes:

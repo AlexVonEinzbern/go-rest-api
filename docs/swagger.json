@@ -306,6 +306,70 @@
                 }
             }
         },
+        "/go-rest-api/orders": {
+            "get": {
+                "description": "Search all orders in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search all Orders",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.OrderResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a Order",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create Order",
+                "parameters": [
+                    {
+                        "description": "Order type",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.OrderCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.OrderResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
         "/go-rest-api/products": {
             "get": {
                 "description": "Search all products in the DataBase",
@@ -882,6 +946,82 @@
                     "type": "string"
                 },
                 "userName": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.OrderCreate": {
+            "type": "object",
+            "properties": {
+                "customerID": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderDate": {
+                    "type": "string"
+                },
+                "requiredDate": {
+                    "type": "string"
+                },
+                "shipAddress": {
+                    "type": "string"
+                },
+                "shipCity": {
+                    "type": "string"
+                },
+                "shipCountry": {
+                    "type": "string"
+                },
+                "shipName": {
+                    "type": "string"
+                },
+                "shipPostalCode": {
+                    "type": "string"
+                },
+                "shippedDate": {
+                    "type": "string"
+                },
+                "shipperID": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.OrderResponse": {
+            "type": "object",
+            "properties": {
+                "customerID": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderDate": {
+                    "type": "string"
+                },
+                "requiredDate": {
+                    "type": "string"
+                },
+                "shipAddress": {
+                    "type": "string"
+                },
+                "shipCity": {
+                    "type": "string"
+                },
+                "shipCountry": {
+                    "type": "string"
+                },
+                "shipName": {
+                    "type": "string"
+                },
+                "shipPostalCode": {
+                    "type": "string"
+                },
+                "shippedDate": {
+                    "type": "string"
+                },
+                "shipperID": {
                     "type": "string"
                 }
             }
