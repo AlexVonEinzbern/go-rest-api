@@ -77,6 +77,12 @@ func setupRouter() *gin.Engine {
 			shippers.PATCH(":id", routes.UpdateShipper)
 			shippers.DELETE(":id", routes.DeleteShipper)
 		}
+		orderproducts := restapi.Group("/orderproducts")
+		{
+			orderproducts.POST("", routes.CreateOrderProduct)
+			orderproducts.GET("", routes.SearchOrderProducts)
+			orderproducts.GET(":id", routes.SearchOrderProduct)
+		}
 	}
 
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") //The URL pointing to API definition
