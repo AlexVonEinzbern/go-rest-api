@@ -58,6 +58,7 @@ func SearchOrderProducts(c *gin.Context) {
 // @Description Search OrderProduct by id in the DataBase
 // @Accept  json
 // @Produce  json
+// @Param id path string true "OrderProduct ID" default(cabckbalgaLJHALncas)
 // @Success 200 {object} []models.OrderProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/orderproducts/{id} [get]

@@ -258,6 +258,16 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "summary": "Search Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -331,6 +341,121 @@ const docTemplate = `{
                         "description": "No Content",
                         "schema": {
                             "$ref": "#/definitions/models.CustomerResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/login": {
+            "post": {
+                "description": "Create a Login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create Login",
+                "parameters": [
+                    {
+                        "description": "Login type",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.LoginCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.LoginResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/login/{date}": {
+            "get": {
+                "description": "Search Login by date in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Login by Date",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "2006-01-02",
+                        "description": "Login date",
+                        "name": "date",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.LoginResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/login/{id}": {
+            "get": {
+                "description": "Search Login by customer id in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Login by Customer id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "Login ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.LoginResponse"
+                            }
                         }
                     },
                     "404": {
@@ -416,6 +541,16 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "summary": "Search OrderProduct by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "OrderProduct ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1206,6 +1341,28 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "userName": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LoginCreate": {
+            "type": "object",
+            "properties": {
+                "customerID": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "customerID": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 }
             }

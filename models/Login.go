@@ -1,14 +1,11 @@
 package models
 
 import (
-	"time"
-
 	"gorm.io/gorm"
 )
 
 type LoginBase struct {
-	DateLogin  time.Time `gorm:"not null"`
-	CustomerID string    `gorm:"not null; unique_index"`
+	CustomerID string `gorm:"not null; unique_index"`
 }
 
 type Login struct {

@@ -82,6 +82,20 @@ definitions:
       userName:
         type: string
     type: object
+  models.LoginCreate:
+    properties:
+      customerID:
+        type: string
+      id:
+        type: string
+    type: object
+  models.LoginResponse:
+    properties:
+      customerID:
+        type: string
+      id:
+        type: string
+    type: object
   models.OrderCreate:
     properties:
       customerID:
@@ -474,6 +488,13 @@ paths:
       consumes:
       - application/json
       description: Search Customer by id in the DataBase
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -511,6 +532,82 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Customer by id
+  /go-rest-api/login:
+    post:
+      consumes:
+      - application/json
+      description: Create a Login
+      parameters:
+      - description: Login type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.LoginCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.LoginResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Login
+  /go-rest-api/login/{date}:
+    get:
+      consumes:
+      - application/json
+      description: Search Login by date in the DataBase
+      parameters:
+      - default: "2006-01-02"
+        description: Login date
+        in: path
+        name: date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LoginResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Login by Date
+  /go-rest-api/login/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Search Login by customer id in the DataBase
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Login ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LoginResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Login by Customer id
   /go-rest-api/orderproducts:
     get:
       consumes:
@@ -558,6 +655,13 @@ paths:
       consumes:
       - application/json
       description: Search OrderProduct by id in the DataBase
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: OrderProduct ID
+        in: path
+        name: id
+        required: true
+        type: string
       produces:
       - application/json
       responses:
