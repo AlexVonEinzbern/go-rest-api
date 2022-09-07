@@ -16,3 +16,6 @@
 
 #environment variables
 *.env
+
+#vscode configuration
+/.vscode
