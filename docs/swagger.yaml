@@ -172,6 +172,24 @@ definitions:
       shipperID:
         type: string
     type: object
+  models.PaymentCreate:
+    properties:
+      creditCardID:
+        type: string
+      id:
+        type: string
+      orderID:
+        type: string
+    type: object
+  models.PaymentResponse:
+    properties:
+      creditCardID:
+        type: string
+      id:
+        type: string
+      orderID:
+        type: string
+    type: object
   models.ProductCreate:
     properties:
       categoryID:
@@ -718,6 +736,82 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Order
+  /go-rest-api/payments:
+    post:
+      consumes:
+      - application/json
+      description: Create a Payment
+      parameters:
+      - description: Payment type
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create Payment
+  /go-rest-api/payments/{date}:
+    get:
+      consumes:
+      - application/json
+      description: Search Payments by date in the DataBase
+      parameters:
+      - default: "2006-01-02"
+        description: Payment date
+        in: path
+        name: date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Payments by Date
+  /go-rest-api/payments/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Search Payment by id in the DataBase
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: Payment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Payment by Customer id
   /go-rest-api/products:
     get:
       consumes:

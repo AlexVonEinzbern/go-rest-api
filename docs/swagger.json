@@ -625,6 +625,121 @@
                 }
             }
         },
+        "/go-rest-api/payments": {
+            "post": {
+                "description": "Create a Payment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create Payment",
+                "parameters": [
+                    {
+                        "description": "Payment type",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.PaymentCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.PaymentResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/payments/{date}": {
+            "get": {
+                "description": "Search Payments by date in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Payments by Date",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "2006-01-02",
+                        "description": "Payment date",
+                        "name": "date",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.PaymentResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/payments/{id}": {
+            "get": {
+                "description": "Search Payment by id in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search Payment by Customer id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "Payment ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.PaymentResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
         "/go-rest-api/products": {
             "get": {
                 "description": "Search all products in the DataBase",
@@ -1470,6 +1585,34 @@
                     "type": "string"
                 },
                 "shipperID": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PaymentCreate": {
+            "type": "object",
+            "properties": {
+                "creditCardID": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderID": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PaymentResponse": {
+            "type": "object",
+            "properties": {
+                "creditCardID": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "orderID": {
                     "type": "string"
                 }
             }
