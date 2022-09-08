@@ -89,6 +89,12 @@ func setupRouter() *gin.Engine {
 			login.GET(":id", routes.SearchLogin)
 			login.GET(":date", routes.SearchLoginDate)
 		}
+		payments := restapi.Group("/payments")
+		{
+			payments.POST("", routes.CreatePayment)
+			payments.GET(":id", routes.SearchPayment)
+			payments.GET(":date", routes.SearchPaymentDate)
+		}
 	}
 
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") //The URL pointing to API definition
