@@ -1,15 +1,12 @@
 package models
 
 import (
-	"time"
-
 	"gorm.io/gorm"
 )
 
 type PaymentBase struct {
-	PaymentDate  time.Time `gorm:"not null"`
-	OrderID      string    `gorm:"not null; unique_index"`
-	CreditCardID string    `gorm:"not null; unique_index"`
+	OrderID      string `gorm:"not null; unique_index"`
+	CreditCardID string `gorm:"not null; unique_index"`
 }
 
 type Payment struct {
