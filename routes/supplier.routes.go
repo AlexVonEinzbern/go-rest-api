@@ -19,7 +19,7 @@ import (
 // @Description Create a Supplier
 // @Accept  json
 // @Produce  json
-// @Param category body models.SupplierCreate true "Supplier type"
+// @Param supplier body models.SupplierCreate true "Supplier type"
 // @Success 200 {object} models.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/suppliers [post]

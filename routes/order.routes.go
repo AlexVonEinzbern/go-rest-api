@@ -19,7 +19,7 @@ import (
 // @Description Create a Order
 // @Accept  json
 // @Produce  json
-// @Param category body models.OrderCreate true "Order type"
+// @Param order body models.OrderCreate true "Order type"
 // @Success 200 {object} models.OrderResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/orders [post]

@@ -18,7 +18,7 @@ import (
 // @Description Create a Login
 // @Accept  json
 // @Produce  json
-// @Param category body models.LoginCreate true "Login type"
+// @Param login body models.LoginCreate true "Login type"
 // @Success 200 {object} models.LoginResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/login [post]

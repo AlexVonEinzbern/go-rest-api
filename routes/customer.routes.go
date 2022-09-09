@@ -19,7 +19,7 @@ import (
 // @Description Create a Customer
 // @Accept  json
 // @Produce  json
-// @Param category body models.CustomerCreate true "Customer type"
+// @Param customer body models.CustomerCreate true "Customer type"
 // @Success 200 {object} models.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/customers [post]

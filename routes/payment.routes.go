@@ -18,7 +18,7 @@ import (
 // @Description Create a Payment
 // @Accept  json
 // @Produce  json
-// @Param category body models.PaymentCreate true "Payment type"
+// @Param payment body models.PaymentCreate true "Payment type"
 // @Success 200 {object} models.PaymentResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/payments [post]

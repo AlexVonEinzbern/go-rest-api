@@ -18,7 +18,7 @@ import (
 // @Description Create a Shipper
 // @Accept  json
 // @Produce  json
-// @Param category body models.ShipperCreate true "Shipper type"
+// @Param shipper body models.ShipperCreate true "Shipper type"
 // @Success 200 {object} models.ShipperResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/shippers [post]
