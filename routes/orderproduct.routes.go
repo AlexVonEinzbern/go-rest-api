@@ -18,7 +18,7 @@ import (
 // @Description Create a OrderProduct
 // @Accept  json
 // @Produce  json
-// @Param order product body models.OrderProductCreate true "OrderProduct type"
+// @Param orderproduct body models.OrderProductCreate true "OrderProduct type"
 // @Success 200 {object} models.OrderProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/orderproducts [post]

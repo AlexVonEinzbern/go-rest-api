@@ -184,6 +184,174 @@ const docTemplate = `{
                 }
             }
         },
+        "/go-rest-api/creditcard": {
+            "get": {
+                "description": "Search all credit cards in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search all SearchCreditCards",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CreditCardResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a CreditCard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create creditcard",
+                "parameters": [
+                    {
+                        "description": "CreditCard a subcategory",
+                        "name": "creditcard",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CreditCardCreate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.SubcategoryResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/go-rest-api/creditcard/{id}": {
+            "get": {
+                "description": "Search CreditCard by id in the DataBase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Search CreditCard by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "CreditCard ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.CreditCardResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a credit card by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete CreditCard by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "CreditCard ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update a credit card by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update CreditCard by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "cabckbalgaLJHALncas",
+                        "description": "CreditCard ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/models.CreditCardResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Can not find objects",
+                        "schema": {
+                            "$ref": "#/definitions/models.APIError"
+                        }
+                    }
+                }
+            }
+        },
         "/go-rest-api/customers": {
             "get": {
                 "description": "Search all customers in the DataBase",
@@ -224,7 +392,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Customer type",
-                        "name": "category",
+                        "name": "customer",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -365,7 +533,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Login type",
-                        "name": "category",
+                        "name": "login",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -389,7 +557,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/login/{date}": {
+        "/go-rest-api/login/date/{date}": {
             "get": {
                 "description": "Search Login by date in the DataBase",
                 "consumes": [
@@ -507,7 +675,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "OrderProduct type",
-                        "name": "category",
+                        "name": "orderproduct",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -610,7 +778,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Order type",
-                        "name": "category",
+                        "name": "order",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -647,7 +815,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Payment type",
-                        "name": "category",
+                        "name": "payment",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -671,7 +839,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/payments/{date}": {
+        "/go-rest-api/payments/date/{date}": {
             "get": {
                 "description": "Search Payments by date in the DataBase",
                 "consumes": [
@@ -949,7 +1117,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Shipper type",
-                        "name": "category",
+                        "name": "shipper",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -1240,7 +1408,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "Supplier type",
-                        "name": "category",
+                        "name": "supplier",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -1374,6 +1542,58 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreditCardCreate": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "customerID": {
+                    "type": "string"
+                },
+                "cvv": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "mm": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "yyyy": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreditCardResponse": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "customerID": {
+                    "type": "string"
+                },
+                "cvv": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "mm": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "yyyy": {
                     "type": "string"
                 }
             }

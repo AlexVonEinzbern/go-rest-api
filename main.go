@@ -87,13 +87,13 @@ func setupRouter() *gin.Engine {
 		{
 			login.POST("", routes.CreateLogin)
 			login.GET(":id", routes.SearchLogin)
-			login.GET(":date", routes.SearchLoginDate)
+			login.GET("/date/:date", routes.SearchLoginDate)
 		}
 		payments := restapi.Group("/payments")
 		{
 			payments.POST("", routes.CreatePayment)
 			payments.GET(":id", routes.SearchPayment)
-			payments.GET(":date", routes.SearchPaymentDate)
+			payments.GET("/date/:date", routes.SearchPaymentDate)
 		}
 		creditcards := restapi.Group("/creditcards")
 		{

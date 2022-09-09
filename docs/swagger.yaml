@@ -28,6 +28,40 @@ definitions:
       id:
         type: string
     type: object
+  models.CreditCardCreate:
+    properties:
+      brand:
+        type: string
+      customerID:
+        type: string
+      cvv:
+        type: string
+      id:
+        type: string
+      mm:
+        type: string
+      number:
+        type: string
+      yyyy:
+        type: string
+    type: object
+  models.CreditCardResponse:
+    properties:
+      brand:
+        type: string
+      customerID:
+        type: string
+      cvv:
+        type: string
+      id:
+        type: string
+      mm:
+        type: string
+      number:
+        type: string
+      yyyy:
+        type: string
+    type: object
   models.CustomerCreate:
     properties:
       address:
@@ -438,6 +472,118 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all active Categories
+  /go-rest-api/creditcard:
+    get:
+      consumes:
+      - application/json
+      description: Search all credit cards in the DataBase
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CreditCardResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search all SearchCreditCards
+    post:
+      consumes:
+      - application/json
+      description: Create a CreditCard
+      parameters:
+      - description: CreditCard a subcategory
+        in: body
+        name: creditcard
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreditCardCreate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SubcategoryResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Create creditcard
+  /go-rest-api/creditcard/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a credit card by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: CreditCard ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Delete CreditCard by id
+    get:
+      consumes:
+      - application/json
+      description: Search CreditCard by id in the DataBase
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: CreditCard ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CreditCardResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search CreditCard by id
+    patch:
+      consumes:
+      - application/json
+      description: Update a credit card by id
+      parameters:
+      - default: cabckbalgaLJHALncas
+        description: CreditCard ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/models.CreditCardResponse'
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Update CreditCard by id
   /go-rest-api/customers:
     get:
       consumes:
@@ -464,7 +610,7 @@ paths:
       parameters:
       - description: Customer type
         in: body
-        name: category
+        name: customer
         required: true
         schema:
           $ref: '#/definitions/models.CustomerCreate'
@@ -558,7 +704,7 @@ paths:
       parameters:
       - description: Login type
         in: body
-        name: category
+        name: login
         required: true
         schema:
           $ref: '#/definitions/models.LoginCreate'
@@ -574,32 +720,6 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Login
-  /go-rest-api/login/{date}:
-    get:
-      consumes:
-      - application/json
-      description: Search Login by date in the DataBase
-      parameters:
-      - default: "2006-01-02"
-        description: Login date
-        in: path
-        name: date
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/models.LoginResponse'
-            type: array
-        "404":
-          description: Can not find objects
-          schema:
-            $ref: '#/definitions/models.APIError'
-      summary: Search Login by Date
   /go-rest-api/login/{id}:
     get:
       consumes:
@@ -626,6 +746,32 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Login by Customer id
+  /go-rest-api/login/date/{date}:
+    get:
+      consumes:
+      - application/json
+      description: Search Login by date in the DataBase
+      parameters:
+      - default: "2006-01-02"
+        description: Login date
+        in: path
+        name: date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LoginResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Login by Date
   /go-rest-api/orderproducts:
     get:
       consumes:
@@ -652,7 +798,7 @@ paths:
       parameters:
       - description: OrderProduct type
         in: body
-        name: category
+        name: orderproduct
         required: true
         schema:
           $ref: '#/definitions/models.OrderProductCreate'
@@ -720,7 +866,7 @@ paths:
       parameters:
       - description: Order type
         in: body
-        name: category
+        name: order
         required: true
         schema:
           $ref: '#/definitions/models.OrderCreate'
@@ -744,7 +890,7 @@ paths:
       parameters:
       - description: Payment type
         in: body
-        name: category
+        name: payment
         required: true
         schema:
           $ref: '#/definitions/models.PaymentCreate'
@@ -760,32 +906,6 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Payment
-  /go-rest-api/payments/{date}:
-    get:
-      consumes:
-      - application/json
-      description: Search Payments by date in the DataBase
-      parameters:
-      - default: "2006-01-02"
-        description: Payment date
-        in: path
-        name: date
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/models.PaymentResponse'
-            type: array
-        "404":
-          description: Can not find objects
-          schema:
-            $ref: '#/definitions/models.APIError'
-      summary: Search Payments by Date
   /go-rest-api/payments/{id}:
     get:
       consumes:
@@ -812,6 +932,32 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Payment by Customer id
+  /go-rest-api/payments/date/{date}:
+    get:
+      consumes:
+      - application/json
+      description: Search Payments by date in the DataBase
+      parameters:
+      - default: "2006-01-02"
+        description: Payment date
+        in: path
+        name: date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentResponse'
+            type: array
+        "404":
+          description: Can not find objects
+          schema:
+            $ref: '#/definitions/models.APIError'
+      summary: Search Payments by Date
   /go-rest-api/products:
     get:
       consumes:
@@ -944,7 +1090,7 @@ paths:
       parameters:
       - description: Shipper type
         in: body
-        name: category
+        name: shipper
         required: true
         schema:
           $ref: '#/definitions/models.ShipperCreate'
@@ -1137,7 +1283,7 @@ paths:
       parameters:
       - description: Supplier type
         in: body
-        name: category
+        name: supplier
         required: true
         schema:
           $ref: '#/definitions/models.SupplierCreate'

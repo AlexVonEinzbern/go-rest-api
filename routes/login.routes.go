@@ -71,7 +71,7 @@ func SearchLogin(c *gin.Context) {
 // @Param date path string true "Login date" default(2006-01-02)
 // @Success 200 {object} []models.LoginResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/login/{date} [get]
+// @Router /go-rest-api/login/date/{date} [get]
 func SearchLoginDate(c *gin.Context) {
 
 	datelogin := c.Param("date_login")

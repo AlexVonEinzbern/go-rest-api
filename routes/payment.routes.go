@@ -71,7 +71,7 @@ func SearchPayment(c *gin.Context) {
 // @Param date path string true "Payment date" default(2006-01-02)
 // @Success 200 {object} []models.PaymentResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/payments/{date} [get]
+// @Router /go-rest-api/payments/date/{date} [get]
 func SearchPaymentDate(c *gin.Context) {
 
 	datepayment := c.Param("date")
