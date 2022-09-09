@@ -13,7 +13,7 @@ func TestPostCategory(t *testing.T) {
 	router := setupRouter()
 	w := httptest.NewRecorder()
 
-    input := strings.NewReader(`{
+	input := strings.NewReader(`{
         "id": "bcajbavajbvajbvbjlaknLHLKUCTG",
         "category_name": "categoria 1",
         "description": "description 1"
@@ -41,4 +41,28 @@ func TestGetActiveCategory(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
+}
+
+func TestUpdateCategory(t *testing.T) {
+	router := setupRouter()
+	w := httptest.NewRecorder()
+
+	input := strings.NewReader(`{
+        "id": "bcajbavajbvajbvbjlaknLHLKUCTG",
+        "description": "description updated"
+    }`)
+
+	req, _ := http.NewRequest("PATCH", "http://localhost:8080/go-rest-api/categories/bcajbavajbvajbvbjlaknLHLKUCTG", input)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+}
+
+func TestDeleteCategory(t *testing.T) {
+	router := setupRouter()
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("DELETE", "http://localhost:8080/go-rest-api/categories/bcajbavajbvajbvbjlaknLHLKUCTG", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusNoContent, w.Code)
 }
