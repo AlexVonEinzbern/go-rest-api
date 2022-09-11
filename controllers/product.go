@@ -5,13 +5,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateProduct
 func CreateProduct(createproduct models.ProductCreate) models.Product {
 
 	product := models.Product{
-		ID: createproduct.ID,
+		ID: utils.IdGenerator(),
 		ProductBase: models.ProductBase{
 			ProductName:     createproduct.ProductName,
 			QuantityPerUnit: createproduct.QuantityPerUnit,

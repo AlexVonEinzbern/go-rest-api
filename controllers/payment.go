@@ -6,13 +6,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreatePayment
 func CreatePayment(createpayment models.PaymentCreate) models.Payment {
 
 	payment := models.Payment{
-		ID: createpayment.ID,
+		ID: utils.IdGenerator(),
 		PaymentBase: models.PaymentBase{
 			OrderID:      createpayment.OrderID,
 			CreditCardID: createpayment.CreditCardID}}

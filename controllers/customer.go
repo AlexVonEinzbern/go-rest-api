@@ -6,13 +6,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateCustomer
 func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 
 	customer := models.Customer{
-		ID: createcustomer.ID,
+		ID: utils.IdGenerator(),
 		CustomerBase: models.CustomerBase{
 			Name:       createcustomer.Name,
 			Email:      createcustomer.Email,

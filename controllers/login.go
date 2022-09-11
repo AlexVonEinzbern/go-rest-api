@@ -6,13 +6,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateLogin
 func CreateLogin(createlogin models.LoginCreate) models.Login {
 
 	login := models.Login{
-		ID: createlogin.ID,
+		ID: utils.IdGenerator(),
 		LoginBase: models.LoginBase{
 			CustomerID: createlogin.CustomerID}}
 

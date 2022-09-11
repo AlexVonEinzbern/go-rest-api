@@ -5,13 +5,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateShipper
 func CreateShipper(createshipper models.ShipperCreate) models.Shipper {
 
 	shipper := models.Shipper{
-		ID: createshipper.ID,
+		ID: utils.IdGenerator(),
 		ShipperBase: models.ShipperBase{
 			CompanyName: createshipper.CompanyName,
 			Phone:       createshipper.Phone}}

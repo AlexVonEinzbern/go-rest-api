@@ -6,13 +6,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateOrder
 func CreateOrder(createorder models.OrderCreate) models.Order {
 
 	order := models.Order{
-		ID: createorder.ID,
+		ID: utils.IdGenerator(),
 		OrderBase: models.OrderBase{
 			OrderDate:      createorder.OrderDate,
 			RequiredDate:   createorder.RequiredDate,

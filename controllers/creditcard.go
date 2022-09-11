@@ -5,13 +5,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateCreditCard
 func CreateCreditCard(createcreditcard models.CreditCardCreate) models.CreditCard {
 
 	creditcard := models.CreditCard{
-		ID: createcreditcard.ID,
+		ID: utils.IdGenerator(),
 		CreditCardBase: models.CreditCardBase{
 			Brand:      createcreditcard.Brand,
 			Number:     createcreditcard.Number,

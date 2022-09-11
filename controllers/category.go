@@ -5,12 +5,13 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 func CreateCategory(createcategory models.CategoryCreate) models.Category {
 
 	category := models.Category{
-		ID: createcategory.ID,
+		ID: utils.IdGenerator(),
 		CategoryBase: models.CategoryBase{
 			CategoryName: createcategory.CategoryName,
 			Description:  createcategory.Description,

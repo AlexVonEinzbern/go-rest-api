@@ -5,13 +5,14 @@ import (
 
 	"github.com/AlexVonEinzbern/go-rest-api/db"
 	"github.com/AlexVonEinzbern/go-rest-api/models"
+	"github.com/AlexVonEinzbern/go-rest-api/utils"
 )
 
 //TODO: Implement CreateSupplier
 func CreateSupplier(createsupplier models.SupplierCreate) models.Supplier {
 
 	supplier := models.Supplier{
-		ID: createsupplier.ID,
+		ID: utils.IdGenerator(),
 		SupplierBase: models.SupplierBase{
 			CompanyName: createsupplier.CompanyName,
 			Address:     createsupplier.Address,
