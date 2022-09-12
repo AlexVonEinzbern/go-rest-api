@@ -75,7 +75,6 @@ func SearchLoginDate(date string) ([]models.Login, error) {
 	}
 
 	defer sqlconn.Close()
-	log.Println(date)
 	start_date, _ := time.Parse("2006-01-02", date)
 	end_date := start_date.AddDate(0, 0, 1)
 
