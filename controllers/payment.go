@@ -80,9 +80,12 @@ func SearchPaymentDate(date string) ([]models.Payment, error) {
 	start_date, _ := time.Parse("2006-01-02", date)
 	end_date := start_date.AddDate(0, 0, 1)
 
+	start := start_date.Format("2006-01-02")
+	end := end_date.Format("2006-01-02")
+
 	log.Println("Starting with payments searching by date")
 
-	result := conn.Where("created_at between ? and ?", start_date, end_date).Find(&payments)
+	result := conn.Where("created_at BETWEEN ? AND ?", start, end).Find(&payments)
 
 	if result.Error != nil {
 		log.Println("DB error", result.Error)

@@ -74,9 +74,9 @@ func SearchPayment(c *gin.Context) {
 // @Router /go-rest-api/payments/date/{date} [get]
 func SearchPaymentDate(c *gin.Context) {
 
-	datepayment := c.Param("date")
+	date := c.Param("date")
 
-	payment, err := controllers.SearchLoginDate(datepayment)
+	payment, err := controllers.SearchLoginDate(date)
 
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
