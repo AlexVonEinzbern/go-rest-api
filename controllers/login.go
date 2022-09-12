@@ -75,13 +75,15 @@ func SearchLoginDate(date string) ([]models.Login, error) {
 	}
 
 	defer sqlconn.Close()
-
+	log.Println(date)
 	start_date, _ := time.Parse("2006-01-02", date)
 	end_date := start_date.AddDate(0, 0, 1)
 
-	log.Println("Starting with login searching by date")
+	start := start_date.Format("2006-01-02")
+	end := end_date.Format("2006-01-02")
 
-	result := conn.Where("created_at between ? and ?", start_date, end_date).Find(&logins)
+	log.Println("Starting with login searching by date")
+	result := conn.Where("created_at BETWEEN ? AND ?", start, end).Find(&logins)
 
 	if result.Error != nil {
 		log.Println("DB error", result.Error)

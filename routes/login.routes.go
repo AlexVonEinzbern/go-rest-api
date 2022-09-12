@@ -74,9 +74,9 @@ func SearchLogin(c *gin.Context) {
 // @Router /go-rest-api/login/date/{date} [get]
 func SearchLoginDate(c *gin.Context) {
 
-	datelogin := c.Param("date_login")
+	date := c.Param("date")
 
-	login, err := controllers.SearchLoginDate(datelogin)
+	login, err := controllers.SearchLoginDate(date)
 
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
