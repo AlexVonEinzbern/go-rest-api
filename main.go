@@ -105,7 +105,7 @@ func setupRouter() *gin.Engine {
 		}
 	}
 
-	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") //The URL pointing to API definition
+	url := ginSwagger.URL("https://go-rest-api.onrender.com/swagger/doc.json") //The URL pointing to API definition
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	return r
 }
