@@ -24,7 +24,7 @@ RUN cp /build/main .
 FROM scratch
 
 COPY --from=builder /dist/main /
-COPY .env /
+#COPY .env /
 
 EXPOSE 8080
 
