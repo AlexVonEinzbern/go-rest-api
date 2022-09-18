@@ -1,6 +1,8 @@
 # go-rest-api
 ecommerce api-rest with basic CRUD operations (Create, Read, Update and Delete) products, suppliers, etc. Manage automatically invoice and shipping operations
 ## How to use this repo?
+
+### Do it by yourself
 - Clone the repo
 ```
 git clone https://github.com/AlexVonEinzbern/go-rest-api.git
@@ -11,6 +13,18 @@ DB_HOST=host.docker.internal
 DB_USER=voneinzbern
 DB_PASSWORD=bacbabaBDBWUOB3242obf
 DB_NAME=go-rest-api
+```
+- Uncomment the followig lines in `db/connection.go` (Line 8):
+```
+//"github.com/joho/godotenv"
+```
+(Lines 15-19) 
+```
+//err := godotenv.Load(".env")
+
+//if err != nil {
+//	log.Fatal("Error loading .env file")
+//}
 ```
 - Build the project using `Docker`:
 ```
@@ -26,8 +40,13 @@ docker run -it -p 8080:8080 --env-file=".env" go-rest-api
 ```
 docker run --add-host=host.docker.internal:host-gateway -it -p 8080:8080 --env-file=".env" go-rest-api
 ```
+### Use the API
+[https://go-rest-api.onrender.com](https://go-rest-api.onrender.com)
+
 ## Documentation
 After the project is running, an interactive documentation created using `Swagger` can be visited on [http://localhost:8080/swagger/index.html#/](http://localhost:8080/swagger/index.html#/)
+
+*Note:* The online documentation can be found [here](https://go-rest-api.onrender.com/swagger/index.html#/).
 
 &emsp; Some examples:
 
