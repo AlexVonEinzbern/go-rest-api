@@ -14,7 +14,7 @@ DB_USER=voneinzbern
 DB_PASSWORD=bacbabaBDBWUOB3242obf
 DB_NAME=go-rest-api
 ```
-- Uncomment the followig lines in `db/connection.go` (Line 8):
+- Uncomment the followig lines on `db/connection.go` (Line 8):
 ```
 //"github.com/joho/godotenv"
 ```
@@ -26,6 +26,11 @@ DB_NAME=go-rest-api
 //	log.Fatal("Error loading .env file")
 //}
 ```
+- Uncomment the following line on `Dockerfile` (Line 27):
+```
+#COPY .env /
+```
+
 - Build the project using `Docker`:
 ```
 docker build -t go-rest-api .
@@ -46,7 +51,7 @@ docker run --add-host=host.docker.internal:host-gateway -it -p 8080:8080 --env-f
 ## Documentation
 After the project is running, an interactive documentation created using `Swagger` can be visited on [http://localhost:8080/swagger/index.html#/](http://localhost:8080/swagger/index.html#/)
 
-*Note:* The online documentation can be found [here](https://go-rest-api.onrender.com/swagger/index.html#/).
+**Note:** The online documentation can be found [here](https://go-rest-api.onrender.com/swagger/index.html#/).
 
 &emsp; Some examples:
 
