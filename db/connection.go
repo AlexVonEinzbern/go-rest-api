@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/AlexVonEinzbern/go-rest-api/models"
-	"github.com/joho/godotenv"
+	//"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
