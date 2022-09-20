@@ -30,13 +30,7 @@ type Customer struct {
 }
 
 type CustomerCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	CustomerBase
-}
-
-type CustomerResponse struct {
-	CustomerBase
-	ID string
 }
 
 // TableName overrides the table name used by Customer to `customer`

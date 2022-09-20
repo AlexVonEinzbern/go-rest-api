@@ -12,17 +12,16 @@ import (
 
 //TODO: Implement CreateSupplier
 
-// @BasePath /api/v1
-
 // CreateSupplier godoc
 // @Summary Create Supplier
 // @Description Create a Supplier
 // @Accept  json
 // @Produce  json
-// @Param supplier body models.SupplierCreate true "Supplier type"
-// @Success 200 {object} models.SupplierResponse
+// @Tags Suppliers
+// @Param supplier body schemas.Supplier true "Supplier type"
+// @Success 200 {object} schemas.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/suppliers [post]
+// @Router /suppliers [post]
 func CreateSupplier(c *gin.Context) {
 
 	var createsupplier models.SupplierCreate
@@ -44,9 +43,10 @@ func CreateSupplier(c *gin.Context) {
 // @Description Search all suppliers in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.SupplierResponse
+// @Tags Suppliers
+// @Success 200 {object} []schemas.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/suppliers [get]
+// @Router /suppliers [get]
 func SearchSuppliers(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchSuppliers())
@@ -59,10 +59,11 @@ func SearchSuppliers(c *gin.Context) {
 // @Description Update a supplier by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Supplier ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.SupplierResponse
+// @Tags Suppliers
+// @Param id path string true "Supplier ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
+// @Success 204 {object} schemas.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/suppliers/{id} [patch]
+// @Router /suppliers/{id} [patch]
 func UpdateSupplier(c *gin.Context) {
 	var updatesupplier models.SupplierBase
 
@@ -92,10 +93,11 @@ func UpdateSupplier(c *gin.Context) {
 // @Description Delete a supplier by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Supplier ID" default(cabckbalgaLJHALncas)
+// @Tags Suppliers
+// @Param id path string true "Supplier ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/suppliers/{id} [delete]
+// @Router /suppliers/{id} [delete]
 func DeleteSupplier(c *gin.Context) {
 	id := c.Param("id")
 

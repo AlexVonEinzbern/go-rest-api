@@ -19,13 +19,7 @@ type CreditCard struct {
 }
 
 type CreditCardCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	CreditCardBase
-}
-
-type CreditCardResponse struct {
-	CreditCardBase
-	ID string
 }
 
 // TableName overrides the table name used by CredirCard to `credit_card`

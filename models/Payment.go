@@ -16,15 +16,7 @@ type Payment struct {
 }
 
 type PaymentCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	PaymentBase
-}
-
-type PaymentResponse struct {
-	PaymentBase
-	ID           string
-	OrderID      string
-	CreditCardID string
 }
 
 // TableName overrides the table name used by Payment to `payment`

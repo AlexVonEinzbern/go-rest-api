@@ -15,13 +15,7 @@ type Login struct {
 }
 
 type LoginCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	LoginBase
-}
-
-type LoginResponse struct {
-	LoginBase
-	ID string
 }
 
 // TableName overrides the table name used by Login to `login`

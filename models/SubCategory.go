@@ -17,13 +17,7 @@ type Subcategory struct {
 }
 
 type SubcategoryCreate struct {
-	ID string 
 	SubcategoryBase
-}
-
-type SubcategoryResponse struct {
-	SubcategoryBase
-	ID string 
 }
 
 // TableName overrides the table name used by Subcategory to `subcategory`

@@ -11,17 +11,17 @@ import (
 )
 
 //TODO: Implement CreateShipper
-// @BasePath /api/v1
 
 // CreateShipper godoc
 // @Summary Create Shipper
 // @Description Create a Shipper
 // @Accept  json
 // @Produce  json
-// @Param shipper body models.ShipperCreate true "Shipper type"
-// @Success 200 {object} models.ShipperResponse
+// @Tags Shippers
+// @Param shipper body schemas.Shipper true "Shipper type"
+// @Success 200 {object} schemas.ShipperResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/shippers [post]
+// @Router /shippers [post]
 func CreateShipper(c *gin.Context) {
 
 	var createshipper models.ShipperCreate
@@ -43,9 +43,10 @@ func CreateShipper(c *gin.Context) {
 // @Description Search all shippers in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.ShipperResponse
+// @Tags Shippers
+// @Success 200 {object} []schemas.ShipperResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/shippers [get]
+// @Router /shippers [get]
 func SearchShippers(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchShippers())
@@ -58,10 +59,11 @@ func SearchShippers(c *gin.Context) {
 // @Description Update a shipper by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Shipper ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.ShipperResponse
+// @Tags Shippers
+// @Param id path string true "Shipper ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 204 {object} schemas.ShipperResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/shippers/{id} [patch]
+// @Router /shippers/{id} [patch]
 func UpdateShipper(c *gin.Context) {
 	var updateshipper models.ShipperBase
 
@@ -91,10 +93,11 @@ func UpdateShipper(c *gin.Context) {
 // @Description Delete a shipper by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Shipper ID" default(cabckbalgaLJHALncas)
-// @Success 204 
+// @Tags Shippers
+// @Param id path string true "Shipper ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/shippers/{id} [delete]
+// @Router /shippers/{id} [delete]
 func DeleteShipper(c *gin.Context) {
 	id := c.Param("id")
 

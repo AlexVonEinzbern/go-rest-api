@@ -11,17 +11,16 @@ import (
 
 //TODO: Implement CreateLogin
 
-// @BasePath /api/v1
-
 // CreateLogin godoc
 // @Summary Create Login
 // @Description Create a Login
 // @Accept  json
 // @Produce  json
-// @Param login body models.LoginCreate true "Login type"
-// @Success 200 {object} models.LoginResponse
+// @Tags Login
+// @Param login body schemas.Login true "Login type"
+// @Success 200 {object} schemas.LoginResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/login [post]
+// @Router /login [post]
 func CreateLogin(c *gin.Context) {
 
 	var createlogin models.LoginCreate
@@ -43,10 +42,11 @@ func CreateLogin(c *gin.Context) {
 // @Description Search Login by customer id in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Login ID" default(cabckbalgaLJHALncas)
-// @Success 200 {object} []models.LoginResponse
+// @Tags Login
+// @Param id path string true "Login ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 200 {object} []schemas.LoginResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/login/{id} [get]
+// @Router /login/{id} [get]
 func SearchLogin(c *gin.Context) {
 
 	id := c.Param("id")
@@ -68,10 +68,11 @@ func SearchLogin(c *gin.Context) {
 // @Description Search Login by date in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param date path string true "Login date" default(2006-01-02)
-// @Success 200 {object} []models.LoginResponse
+// @Tags Login
+// @Param date path string true "Login date" example(2006-01-02)
+// @Success 200 {object} []schemas.LoginResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/login/date/{date} [get]
+// @Router /login/date/{date} [get]
 func SearchLoginDate(c *gin.Context) {
 
 	date := c.Param("date")

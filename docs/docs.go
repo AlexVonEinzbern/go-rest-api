@@ -24,7 +24,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/go-rest-api/categories": {
+        "/categories": {
             "get": {
                 "description": "Search all catagories in the DataBase",
                 "consumes": [
@@ -33,6 +33,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Categories"
+                ],
                 "summary": "Search all Categories",
                 "responses": {
                     "200": {
@@ -40,7 +43,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CategoryResponse"
+                                "$ref": "#/definitions/schemas.CategoryResponse"
                             }
                         }
                     },
@@ -60,6 +63,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Categories"
+                ],
                 "summary": "Create Category",
                 "parameters": [
                     {
@@ -68,7 +74,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.CategoryCreate"
+                            "$ref": "#/definitions/schemas.Category"
                         }
                     }
                 ],
@@ -76,7 +82,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.CategoryResponse"
+                            "$ref": "#/definitions/schemas.CategoryResponse"
                         }
                     },
                     "404": {
@@ -88,7 +94,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/categories/active": {
+        "/categories/active": {
             "get": {
                 "description": "Search active categories in the DataBase",
                 "consumes": [
@@ -97,6 +103,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Categories"
+                ],
                 "summary": "Search all active Categories",
                 "responses": {
                     "200": {
@@ -104,7 +113,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CategoryResponse"
+                                "$ref": "#/definitions/schemas.CategoryResponse"
                             }
                         }
                     },
@@ -117,7 +126,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/categories/{id}": {
+        "/categories/{id}": {
             "delete": {
                 "description": "Delete a category by id",
                 "consumes": [
@@ -126,11 +135,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Categories"
+                ],
                 "summary": "Delete Category by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Category ID",
                         "name": "id",
                         "in": "path",
@@ -157,11 +169,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Categories"
+                ],
                 "summary": "Update Category by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Category ID",
                         "name": "id",
                         "in": "path",
@@ -172,7 +187,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.CategoryResponse"
+                            "$ref": "#/definitions/schemas.CategoryResponse"
                         }
                     },
                     "404": {
@@ -184,7 +199,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/creditcard": {
+        "/creditcard": {
             "get": {
                 "description": "Search all credit cards in the DataBase",
                 "consumes": [
@@ -193,6 +208,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "CreditCards"
+                ],
                 "summary": "Search all SearchCreditCards",
                 "responses": {
                     "200": {
@@ -200,7 +218,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CreditCardResponse"
+                                "$ref": "#/definitions/schemas.CreditCardResponse"
                             }
                         }
                     },
@@ -220,6 +238,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "CreditCards"
+                ],
                 "summary": "Create creditcard",
                 "parameters": [
                     {
@@ -228,7 +249,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.CreditCardCreate"
+                            "$ref": "#/definitions/schemas.CreditCard"
                         }
                     }
                 ],
@@ -236,7 +257,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.SubcategoryResponse"
+                            "$ref": "#/definitions/schemas.CreditCardResponse"
                         }
                     },
                     "404": {
@@ -248,7 +269,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/creditcard/{id}": {
+        "/creditcard/{id}": {
             "get": {
                 "description": "Search CreditCard by id in the DataBase",
                 "consumes": [
@@ -257,11 +278,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "CreditCards"
+                ],
                 "summary": "Search CreditCard by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5cc1f36f-1287-4c88-63fb-601feb9634be",
                         "description": "CreditCard ID",
                         "name": "id",
                         "in": "path",
@@ -274,7 +298,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CreditCardResponse"
+                                "$ref": "#/definitions/schemas.CreditCardResponse"
                             }
                         }
                     },
@@ -294,11 +318,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "CreditCards"
+                ],
                 "summary": "Delete CreditCard by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5cc1f36f-1287-4c88-63fb-601feb9634be",
                         "description": "CreditCard ID",
                         "name": "id",
                         "in": "path",
@@ -325,11 +352,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "CreditCards"
+                ],
                 "summary": "Update CreditCard by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5cc1f36f-1287-4c88-63fb-601feb9634be",
                         "description": "CreditCard ID",
                         "name": "id",
                         "in": "path",
@@ -340,7 +370,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.CreditCardResponse"
+                            "$ref": "#/definitions/schemas.CreditCardResponse"
                         }
                     },
                     "404": {
@@ -352,7 +382,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/customers": {
+        "/customers": {
             "get": {
                 "description": "Search all customers in the DataBase",
                 "consumes": [
@@ -361,6 +391,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Customers"
+                ],
                 "summary": "Search all Customers",
                 "responses": {
                     "200": {
@@ -368,7 +401,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CustomerResponse"
+                                "$ref": "#/definitions/schemas.CustomerResponse"
                             }
                         }
                     },
@@ -388,6 +421,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Customers"
+                ],
                 "summary": "Create Customer",
                 "parameters": [
                     {
@@ -396,7 +432,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.CustomerCreate"
+                            "$ref": "#/definitions/schemas.Customer"
                         }
                     }
                 ],
@@ -404,7 +440,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.CustomerResponse"
+                            "$ref": "#/definitions/schemas.CustomerResponse"
                         }
                     },
                     "404": {
@@ -416,7 +452,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/customers/{id}": {
+        "/customers/{id}": {
             "get": {
                 "description": "Search Customer by id in the DataBase",
                 "consumes": [
@@ -425,11 +461,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Customers"
+                ],
                 "summary": "Search Customer by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Customer ID",
                         "name": "id",
                         "in": "path",
@@ -442,7 +481,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.CategoryResponse"
+                                "$ref": "#/definitions/schemas.CustomerResponse"
                             }
                         }
                     },
@@ -462,11 +501,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Customers"
+                ],
                 "summary": "Delete Customer by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Customer ID",
                         "name": "id",
                         "in": "path",
@@ -493,11 +535,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Customers"
+                ],
                 "summary": "Update Customer by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Customer ID",
                         "name": "id",
                         "in": "path",
@@ -508,7 +553,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.CustomerResponse"
+                            "$ref": "#/definitions/schemas.CustomerResponse"
                         }
                     },
                     "404": {
@@ -520,7 +565,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/login": {
+        "/login": {
             "post": {
                 "description": "Create a Login",
                 "consumes": [
@@ -528,6 +573,9 @@ const docTemplate = `{
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "Login"
                 ],
                 "summary": "Create Login",
                 "parameters": [
@@ -537,7 +585,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.LoginCreate"
+                            "$ref": "#/definitions/schemas.Login"
                         }
                     }
                 ],
@@ -545,7 +593,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.LoginResponse"
+                            "$ref": "#/definitions/schemas.LoginResponse"
                         }
                     },
                     "404": {
@@ -557,7 +605,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/login/date/{date}": {
+        "/login/date/{date}": {
             "get": {
                 "description": "Search Login by date in the DataBase",
                 "consumes": [
@@ -566,11 +614,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Login"
+                ],
                 "summary": "Search Login by Date",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "2006-01-02",
+                        "example": "2006-01-02",
                         "description": "Login date",
                         "name": "date",
                         "in": "path",
@@ -583,7 +634,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.LoginResponse"
+                                "$ref": "#/definitions/schemas.LoginResponse"
                             }
                         }
                     },
@@ -596,7 +647,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/login/{id}": {
+        "/login/{id}": {
             "get": {
                 "description": "Search Login by customer id in the DataBase",
                 "consumes": [
@@ -605,11 +656,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Login"
+                ],
                 "summary": "Search Login by Customer id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Login ID",
                         "name": "id",
                         "in": "path",
@@ -622,7 +676,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.LoginResponse"
+                                "$ref": "#/definitions/schemas.LoginResponse"
                             }
                         }
                     },
@@ -635,7 +689,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/orderproducts": {
+        "/orderproducts": {
             "get": {
                 "description": "Search all orderproducts in the DataBase",
                 "consumes": [
@@ -644,6 +698,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "OrderProducts"
+                ],
                 "summary": "Search all OrderProducts",
                 "responses": {
                     "200": {
@@ -651,7 +708,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.OrderProductResponse"
+                                "$ref": "#/definitions/schemas.OrderProductResponse"
                             }
                         }
                     },
@@ -671,6 +728,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "OrderProducts"
+                ],
                 "summary": "Create OrderProduct",
                 "parameters": [
                     {
@@ -679,7 +739,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.OrderProductCreate"
+                            "$ref": "#/definitions/schemas.OrderProduct"
                         }
                     }
                 ],
@@ -687,7 +747,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.OrderProductResponse"
+                            "$ref": "#/definitions/schemas.OrderProductResponse"
                         }
                     },
                     "404": {
@@ -699,7 +759,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/orderproducts/{id}": {
+        "/orderproducts/{id}": {
             "get": {
                 "description": "Search OrderProduct by id in the DataBase",
                 "consumes": [
@@ -708,11 +768,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "OrderProducts"
+                ],
                 "summary": "Search OrderProduct by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "OrderProduct ID",
                         "name": "id",
                         "in": "path",
@@ -725,7 +788,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.OrderProductResponse"
+                                "$ref": "#/definitions/schemas.OrderProductResponse"
                             }
                         }
                     },
@@ -738,7 +801,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/orders": {
+        "/orders": {
             "get": {
                 "description": "Search all orders in the DataBase",
                 "consumes": [
@@ -747,6 +810,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Search all Orders",
                 "responses": {
                     "200": {
@@ -754,7 +820,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.OrderResponse"
+                                "$ref": "#/definitions/schemas.OrderResponse"
                             }
                         }
                     },
@@ -774,6 +840,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Orders"
+                ],
                 "summary": "Create Order",
                 "parameters": [
                     {
@@ -782,7 +851,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.OrderCreate"
+                            "$ref": "#/definitions/schemas.Order"
                         }
                     }
                 ],
@@ -790,7 +859,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.OrderResponse"
+                            "$ref": "#/definitions/schemas.OrderResponse"
                         }
                     },
                     "404": {
@@ -802,7 +871,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/payments": {
+        "/payments": {
             "post": {
                 "description": "Create a Payment",
                 "consumes": [
@@ -810,6 +879,9 @@ const docTemplate = `{
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "Payments"
                 ],
                 "summary": "Create Payment",
                 "parameters": [
@@ -819,7 +891,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.PaymentCreate"
+                            "$ref": "#/definitions/schemas.Payment"
                         }
                     }
                 ],
@@ -827,7 +899,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.PaymentResponse"
+                            "$ref": "#/definitions/schemas.PaymentResponse"
                         }
                     },
                     "404": {
@@ -839,7 +911,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/payments/date/{date}": {
+        "/payments/date/{date}": {
             "get": {
                 "description": "Search Payments by date in the DataBase",
                 "consumes": [
@@ -848,11 +920,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Payments"
+                ],
                 "summary": "Search Payments by Date",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "2006-01-02",
+                        "example": "2006-01-02",
                         "description": "Payment date",
                         "name": "date",
                         "in": "path",
@@ -865,7 +940,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.PaymentResponse"
+                                "$ref": "#/definitions/schemas.PaymentResponse"
                             }
                         }
                     },
@@ -878,7 +953,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/payments/{id}": {
+        "/payments/{id}": {
             "get": {
                 "description": "Search Payment by id in the DataBase",
                 "consumes": [
@@ -887,11 +962,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Payments"
+                ],
                 "summary": "Search Payment by Customer id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx",
                         "description": "Payment ID",
                         "name": "id",
                         "in": "path",
@@ -904,7 +982,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.PaymentResponse"
+                                "$ref": "#/definitions/schemas.PaymentResponse"
                             }
                         }
                     },
@@ -917,7 +995,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/products": {
+        "/products": {
             "get": {
                 "description": "Search all products in the DataBase",
                 "consumes": [
@@ -926,6 +1004,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Search all Products",
                 "responses": {
                     "200": {
@@ -933,7 +1014,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.ProductResponse"
+                                "$ref": "#/definitions/schemas.ProductResponse"
                             }
                         }
                     },
@@ -953,6 +1034,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Create Product",
                 "parameters": [
                     {
@@ -961,7 +1045,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ProductCreate"
+                            "$ref": "#/definitions/schemas.Product"
                         }
                     }
                 ],
@@ -969,7 +1053,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.ProductResponse"
+                            "$ref": "#/definitions/schemas.ProductResponse"
                         }
                     },
                     "404": {
@@ -981,7 +1065,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/products/active": {
+        "/products/active": {
             "get": {
                 "description": "Search all active products in the DataBase",
                 "consumes": [
@@ -990,6 +1074,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Search all active Products",
                 "responses": {
                     "200": {
@@ -997,7 +1084,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.ProductResponse"
+                                "$ref": "#/definitions/schemas.ProductResponse"
                             }
                         }
                     },
@@ -1010,7 +1097,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/products/{id}": {
+        "/products/{id}": {
             "delete": {
                 "description": "Delete a product by id",
                 "consumes": [
@@ -1019,11 +1106,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Delete a Product by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634x",
                         "description": "Product ID",
                         "name": "id",
                         "in": "path",
@@ -1050,11 +1140,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Products"
+                ],
                 "summary": "Update Product by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634x",
                         "description": "Product ID",
                         "name": "id",
                         "in": "path",
@@ -1065,7 +1158,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.ProductResponse"
+                            "$ref": "#/definitions/schemas.ProductResponse"
                         }
                     },
                     "404": {
@@ -1077,7 +1170,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/shippers": {
+        "/shippers": {
             "get": {
                 "description": "Search all shippers in the DataBase",
                 "consumes": [
@@ -1086,6 +1179,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Shippers"
+                ],
                 "summary": "Search all Shippers",
                 "responses": {
                     "200": {
@@ -1093,7 +1189,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.ShipperResponse"
+                                "$ref": "#/definitions/schemas.ShipperResponse"
                             }
                         }
                     },
@@ -1113,6 +1209,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Shippers"
+                ],
                 "summary": "Create Shipper",
                 "parameters": [
                     {
@@ -1121,7 +1220,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ShipperCreate"
+                            "$ref": "#/definitions/schemas.Shipper"
                         }
                     }
                 ],
@@ -1129,7 +1228,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.ShipperResponse"
+                            "$ref": "#/definitions/schemas.ShipperResponse"
                         }
                     },
                     "404": {
@@ -1141,7 +1240,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/shippers/{id}": {
+        "/shippers/{id}": {
             "delete": {
                 "description": "Delete a shipper by id",
                 "consumes": [
@@ -1150,11 +1249,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Shippers"
+                ],
                 "summary": "Delete Shipper by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Shipper ID",
                         "name": "id",
                         "in": "path",
@@ -1181,11 +1283,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Shippers"
+                ],
                 "summary": "Update Shipper by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "5dd1f36f-1627-4c88-98fb-601feb9634be",
                         "description": "Shipper ID",
                         "name": "id",
                         "in": "path",
@@ -1196,7 +1301,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.ShipperResponse"
+                            "$ref": "#/definitions/schemas.ShipperResponse"
                         }
                     },
                     "404": {
@@ -1208,7 +1313,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/subcategories": {
+        "/subcategories": {
             "get": {
                 "description": "Search all subcatagories in the DataBase",
                 "consumes": [
@@ -1217,6 +1322,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Subcategories"
+                ],
                 "summary": "Search all Subcategories",
                 "responses": {
                     "200": {
@@ -1224,7 +1332,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.SubcategoryResponse"
+                                "$ref": "#/definitions/schemas.SubcategoryResponse"
                             }
                         }
                     },
@@ -1244,6 +1352,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Subcategories"
+                ],
                 "summary": "Create Subcategory",
                 "parameters": [
                     {
@@ -1252,7 +1363,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SubcategoryCreate"
+                            "$ref": "#/definitions/schemas.Subcategory"
                         }
                     }
                 ],
@@ -1260,7 +1371,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.SubcategoryResponse"
+                            "$ref": "#/definitions/schemas.SubcategoryResponse"
                         }
                     },
                     "404": {
@@ -1272,7 +1383,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/subcategories/active": {
+        "/subcategories/active": {
             "get": {
                 "description": "Search all active categories in the DataBase",
                 "consumes": [
@@ -1281,6 +1392,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Subcategories"
+                ],
                 "summary": "Search all active Subcategories",
                 "responses": {
                     "200": {
@@ -1288,7 +1402,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.SubcategoryResponse"
+                                "$ref": "#/definitions/schemas.SubcategoryResponse"
                             }
                         }
                     },
@@ -1301,7 +1415,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/subcategories/{id}": {
+        "/subcategories/{id}": {
             "delete": {
                 "description": "Delete a subcategory by id",
                 "consumes": [
@@ -1310,11 +1424,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Subcategories"
+                ],
                 "summary": "Delete a Subcategory by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx",
                         "description": "Subcategory ID",
                         "name": "id",
                         "in": "path",
@@ -1341,11 +1458,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Subcategories"
+                ],
                 "summary": "Update Subcategory by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx",
                         "description": "Subcategory ID",
                         "name": "id",
                         "in": "path",
@@ -1356,7 +1476,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.SubcategoryResponse"
+                            "$ref": "#/definitions/schemas.SubcategoryResponse"
                         }
                     },
                     "404": {
@@ -1368,7 +1488,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/suppliers": {
+        "/suppliers": {
             "get": {
                 "description": "Search all suppliers in the DataBase",
                 "consumes": [
@@ -1377,6 +1497,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Suppliers"
+                ],
                 "summary": "Search all Suppliers",
                 "responses": {
                     "200": {
@@ -1384,7 +1507,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.SupplierResponse"
+                                "$ref": "#/definitions/schemas.SupplierResponse"
                             }
                         }
                     },
@@ -1404,6 +1527,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Suppliers"
+                ],
                 "summary": "Create Supplier",
                 "parameters": [
                     {
@@ -1412,7 +1538,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SupplierCreate"
+                            "$ref": "#/definitions/schemas.Supplier"
                         }
                     }
                 ],
@@ -1420,7 +1546,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.SupplierResponse"
+                            "$ref": "#/definitions/schemas.SupplierResponse"
                         }
                     },
                     "404": {
@@ -1432,7 +1558,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/go-rest-api/suppliers/{id}": {
+        "/suppliers/{id}": {
             "delete": {
                 "description": "Delete a supplier by id",
                 "consumes": [
@@ -1441,11 +1567,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Suppliers"
+                ],
                 "summary": "Delete Supplier by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634x",
                         "description": "Supplier ID",
                         "name": "id",
                         "in": "path",
@@ -1472,11 +1601,14 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Suppliers"
+                ],
                 "summary": "Update Supplier by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "default": "cabckbalgaLJHALncas",
+                        "example": "2ld1f12f-2227-8s08-18cc-222fdb9634x",
                         "description": "Supplier ID",
                         "name": "id",
                         "in": "path",
@@ -1487,7 +1619,7 @@ const docTemplate = `{
                     "204": {
                         "description": "No Content",
                         "schema": {
-                            "$ref": "#/definitions/models.SupplierResponse"
+                            "$ref": "#/definitions/schemas.SupplierResponse"
                         }
                     },
                     "404": {
@@ -1512,533 +1644,625 @@ const docTemplate = `{
                 }
             }
         },
-        "models.CategoryCreate": {
+        "schemas.Category": {
             "type": "object",
             "properties": {
-                "active": {
-                    "type": "boolean"
-                },
                 "categoryName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Category 1"
                 },
                 "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Description 1"
                 }
             }
         },
-        "models.CategoryResponse": {
+        "schemas.CategoryResponse": {
             "type": "object",
             "properties": {
                 "active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "example": false
                 },
                 "categoryName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Category 1"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Description 1"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 }
             }
         },
-        "models.CreditCardCreate": {
+        "schemas.CreditCard": {
             "type": "object",
             "properties": {
                 "brand": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Visa"
                 },
                 "customerID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "cvv": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "847"
                 },
                 "mm": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "07"
                 },
                 "number": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "4468467578025601"
                 },
                 "yyyy": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025"
                 }
             }
         },
-        "models.CreditCardResponse": {
+        "schemas.CreditCardResponse": {
             "type": "object",
             "properties": {
                 "brand": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Visa"
                 },
                 "customerID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "cvv": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "847"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5cc1f36f-1287-4c88-63fb-601feb9634be"
                 },
                 "mm": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "07"
                 },
                 "number": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "4468467578025601"
                 },
                 "yyyy": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025"
                 }
             }
         },
-        "models.CustomerCreate": {
+        "schemas.Customer": {
             "type": "object",
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6597 Westheimer Rd"
                 },
                 "birthday": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "country": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "dni": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "105883636"
                 },
                 "email": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "ramona.ellis@example.com"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Ramona Ellis"
                 },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "addison"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "7097900"
                 },
                 "postalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "yellowpeacock117"
                 }
             }
         },
-        "models.CustomerResponse": {
+        "schemas.CustomerResponse": {
             "type": "object",
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6597 Westheimer Rd"
                 },
                 "birthday": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "country": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "dni": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "105883636"
                 },
                 "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "ramona.ellis@example.com"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Ramona Ellis"
                 },
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "addison"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "7097900"
                 },
                 "postalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 },
                 "userName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "yellowpeacock117"
                 }
             }
         },
-        "models.LoginCreate": {
+        "schemas.Login": {
             "type": "object",
             "properties": {
                 "customerID": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 }
             }
         },
-        "models.LoginResponse": {
+        "schemas.LoginResponse": {
             "type": "object",
             "properties": {
                 "customerID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "9cc1g36t-6537-4d10-11fs-771may9224vv"
                 }
             }
         },
-        "models.OrderCreate": {
+        "schemas.Order": {
             "type": "object",
             "properties": {
                 "customerID": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "orderDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "requiredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "shipAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6597 Westheimer Rd"
                 },
                 "shipCity": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "shipCountry": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "shipName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Servientrega"
                 },
                 "shipPostalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 },
                 "shippedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-04"
                 },
                 "shipperID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "9cc1g36t-6537-4d10-11fs-771may9224vv"
                 }
             }
         },
-        "models.OrderProductCreate": {
+        "schemas.OrderProduct": {
             "type": "object",
             "properties": {
                 "discount": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 2400
                 },
                 "orderID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "9cc1g36t-6537-4d10-11fs-771may9224vv"
                 },
                 "productID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "quantity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 5
                 },
                 "unitPrice": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 32400
                 }
             }
         },
-        "models.OrderProductResponse": {
+        "schemas.OrderProductResponse": {
             "type": "object",
             "properties": {
                 "discount": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 2400
+                },
+                "id": {
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "orderID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "9cc1g36t-6537-4d10-11fs-771may9224vv"
                 },
                 "productID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "quantity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 5
                 },
                 "unitPrice": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 32400
                 }
             }
         },
-        "models.OrderResponse": {
+        "schemas.OrderResponse": {
             "type": "object",
             "properties": {
                 "customerID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx"
                 },
                 "orderDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "requiredDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-02"
                 },
                 "shipAddress": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6597 Westheimer Rd"
                 },
                 "shipCity": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "shipCountry": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "shipName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "not null"
                 },
                 "shipPostalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 },
                 "shippedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "1990-01-04"
                 },
                 "shipperID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "9cc1g36t-6537-4d10-11fs-771may9224vv"
                 }
             }
         },
-        "models.PaymentCreate": {
+        "schemas.Payment": {
             "type": "object",
             "properties": {
                 "creditCardID": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5cc1f36f-1287-4c88-63fb-601feb9634be"
                 },
                 "orderID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 }
             }
         },
-        "models.PaymentResponse": {
+        "schemas.PaymentResponse": {
             "type": "object",
             "properties": {
                 "creditCardID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5cc1f36f-1287-4c88-63fb-601feb9634be"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx"
                 },
                 "orderID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 }
             }
         },
-        "models.ProductCreate": {
+        "schemas.Product": {
             "type": "object",
             "properties": {
                 "categoryID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5cc1f36f-1287-4c88-63fb-601feb9634be"
                 },
                 "discontinued": {
-                    "type": "boolean"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "boolean",
+                    "example": false
                 },
                 "productName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Product 1"
                 },
                 "quantity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 10
                 },
                 "quantityPerUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2"
                 },
                 "reorderLevel": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "supplierID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "unitsInStock": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 10
                 },
                 "unitsOnOrder": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 3
                 }
             }
         },
-        "models.ProductResponse": {
+        "schemas.ProductResponse": {
             "type": "object",
             "properties": {
                 "categoryID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5cc1f36f-1287-4c88-63fb-601feb9634be"
                 },
                 "discontinued": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "example": false
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx"
                 },
                 "productName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Product 1"
                 },
                 "quantity": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 10
                 },
                 "quantityPerUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "32400"
                 },
                 "reorderLevel": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "supplierID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "unitsInStock": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 10
                 },
                 "unitsOnOrder": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 3
                 }
             }
         },
-        "models.ShipperCreate": {
+        "schemas.Shipper": {
             "type": "object",
             "properties": {
                 "companyName": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Servientrega"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6697901"
                 }
             }
         },
-        "models.ShipperResponse": {
+        "schemas.ShipperResponse": {
             "type": "object",
             "properties": {
                 "companyName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Servientrega"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6697901"
                 }
             }
         },
-        "models.SubcategoryCreate": {
+        "schemas.Subcategory": {
             "type": "object",
             "properties": {
-                "active": {
-                    "type": "boolean"
-                },
                 "categoryID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Description about subcategory 1"
                 },
                 "subCategoryName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Subcategory 1"
                 }
             }
         },
-        "models.SubcategoryResponse": {
+        "schemas.SubcategoryResponse": {
             "type": "object",
             "properties": {
-                "active": {
-                    "type": "boolean"
-                },
                 "categoryID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "5dd1f36f-1627-4c88-98fb-601feb9634be"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Description about subcategory 1"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx"
                 },
                 "subCategoryName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Subcategory 1"
                 }
             }
         },
-        "models.SupplierCreate": {
+        "schemas.Supplier": {
             "type": "object",
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "49 Spring St"
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "companyName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Arthur Clark"
                 },
                 "country": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "homePage": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "arthur.clark.com"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6475240"
                 },
                 "postalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 }
             }
         },
-        "models.SupplierResponse": {
+        "schemas.SupplierResponse": {
             "type": "object",
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "49 Spring St"
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Billings"
                 },
                 "companyName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Arthur Clark"
                 },
                 "country": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "United States"
                 },
                 "homePage": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "arthur.clark.com"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2ld1f12f-2227-8s08-18cc-222fdb9634xx"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "6475240"
                 },
                 "postalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "63104"
                 }
             }
         }
@@ -2048,8 +2272,8 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1",
-	Host:             "",
-	BasePath:         "",
+	Host:             "go-rest-api.onrender.com",
+	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "go-rest-api",
 	Description:      "ecommerce api-rest with basic CRUD operations (Create, Read, Update and Delete) products, suppliers, etc. Manage automatically invoice and shipping operations",

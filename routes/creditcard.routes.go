@@ -12,17 +12,16 @@ import (
 
 //TODO: Implement CreateCreditCard
 
-// @BasePath /api/v1
-
 // CreateCreditCard godoc
 // @Summary Create creditcard
 // @Description Create a CreditCard
 // @Accept  json
 // @Produce  json
-// @Param creditcard body models.CreditCardCreate true "CreditCard a subcategory"
-// @Success 200 {object} models.SubcategoryResponse
+// @Tags CreditCards
+// @Param creditcard body schemas.CreditCard true "CreditCard a subcategory"
+// @Success 200 {object} schemas.CreditCardResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/creditcard [post]
+// @Router /creditcard [post]
 func CreateCreditCard(c *gin.Context) {
 
 	var createcreditcard models.CreditCardCreate
@@ -44,9 +43,10 @@ func CreateCreditCard(c *gin.Context) {
 // @Description Search all credit cards in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.CreditCardResponse
+// @Tags CreditCards
+// @Success 200 {object} []schemas.CreditCardResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/creditcard [get]
+// @Router /creditcard [get]
 func SearchCreditCards(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchCreditCards())
@@ -59,17 +59,18 @@ func SearchCreditCards(c *gin.Context) {
 // @Description Search CreditCard by id in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path string true "CreditCard ID" default(cabckbalgaLJHALncas)
-// @Success 200 {object} []models.CreditCardResponse
+// @Tags CreditCards
+// @Param id path string true "CreditCard ID" example(5cc1f36f-1287-4c88-63fb-601feb9634be)
+// @Success 200 {object} []schemas.CreditCardResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/creditcard/{id} [get]
+// @Router /creditcard/{id} [get]
 func SearchCreditCard(c *gin.Context) {
 
-    id := c.Param("id")
+	id := c.Param("id")
 
-    creditcard, err := controllers.SearchCreditCard(id)
+	creditcard, err := controllers.SearchCreditCard(id)
 
-    if err != nil {
+	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
 		return
 	}
@@ -84,10 +85,11 @@ func SearchCreditCard(c *gin.Context) {
 // @Description Update a credit card by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "CreditCard ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.CreditCardResponse
+// @Tags CreditCards
+// @Param id path string true "CreditCard ID" example(5cc1f36f-1287-4c88-63fb-601feb9634be)
+// @Success 204 {object} schemas.CreditCardResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/creditcard/{id} [patch]
+// @Router /creditcard/{id} [patch]
 func UpdateCreditCard(c *gin.Context) {
 	var updatecreditcard models.CreditCardBase
 
@@ -117,10 +119,11 @@ func UpdateCreditCard(c *gin.Context) {
 // @Description Delete a credit card by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "CreditCard ID" default(cabckbalgaLJHALncas)
+// @Tags CreditCards
+// @Param id path string true "CreditCard ID" example(5cc1f36f-1287-4c88-63fb-601feb9634be)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/creditcard/{id} [delete]
+// @Router /creditcard/{id} [delete]
 func DeleteCreditCard(c *gin.Context) {
 	id := c.Param("id")
 

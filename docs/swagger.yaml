@@ -1,3 +1,4 @@
+basePath: /api/v1
 definitions:
   models.APIError:
     properties:
@@ -6,352 +7,457 @@ definitions:
       errorMessage:
         type: string
     type: object
-  models.CategoryCreate:
+  schemas.Category:
+    properties:
+      categoryName:
+        example: Category 1
+        type: string
+      description:
+        example: Description 1
+        type: string
+    type: object
+  schemas.CategoryResponse:
     properties:
       active:
+        example: false
         type: boolean
       categoryName:
+        example: Category 1
         type: string
       description:
+        example: Description 1
         type: string
       id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
     type: object
-  models.CategoryResponse:
-    properties:
-      active:
-        type: boolean
-      categoryName:
-        type: string
-      description:
-        type: string
-      id:
-        type: string
-    type: object
-  models.CreditCardCreate:
+  schemas.CreditCard:
     properties:
       brand:
+        example: Visa
         type: string
       customerID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       cvv:
-        type: string
-      id:
+        example: "847"
         type: string
       mm:
+        example: "07"
         type: string
       number:
+        example: "4468467578025601"
         type: string
       yyyy:
+        example: "2025"
         type: string
     type: object
-  models.CreditCardResponse:
+  schemas.CreditCardResponse:
     properties:
       brand:
+        example: Visa
         type: string
       customerID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       cvv:
+        example: "847"
         type: string
       id:
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         type: string
       mm:
+        example: "07"
         type: string
       number:
+        example: "4468467578025601"
         type: string
       yyyy:
+        example: "2025"
         type: string
     type: object
-  models.CustomerCreate:
+  schemas.Customer:
     properties:
       address:
+        example: 6597 Westheimer Rd
         type: string
       birthday:
+        example: "1990-01-02"
         type: string
       city:
+        example: Billings
         type: string
       country:
+        example: United States
         type: string
       dni:
+        example: "105883636"
         type: string
       email:
-        type: string
-      id:
+        example: ramona.ellis@example.com
         type: string
       name:
+        example: Ramona Ellis
         type: string
       password:
+        example: addison
         type: string
       phone:
+        example: "7097900"
         type: string
       postalCode:
+        example: "63104"
         type: string
       userName:
+        example: yellowpeacock117
         type: string
     type: object
-  models.CustomerResponse:
+  schemas.CustomerResponse:
     properties:
       address:
+        example: 6597 Westheimer Rd
         type: string
       birthday:
+        example: "1990-01-02"
         type: string
       city:
+        example: Billings
         type: string
       country:
+        example: United States
         type: string
       dni:
+        example: "105883636"
         type: string
       email:
+        example: ramona.ellis@example.com
         type: string
       id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       name:
+        example: Ramona Ellis
         type: string
       password:
+        example: addison
         type: string
       phone:
+        example: "7097900"
         type: string
       postalCode:
+        example: "63104"
         type: string
       userName:
+        example: yellowpeacock117
         type: string
     type: object
-  models.LoginCreate:
+  schemas.Login:
     properties:
       customerID:
-        type: string
-      id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
     type: object
-  models.LoginResponse:
+  schemas.LoginResponse:
     properties:
       customerID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       id:
+        example: 9cc1g36t-6537-4d10-11fs-771may9224vv
         type: string
     type: object
-  models.OrderCreate:
+  schemas.Order:
     properties:
       customerID:
-        type: string
-      id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       orderDate:
+        example: "1990-01-02"
         type: string
       requiredDate:
+        example: "1990-01-02"
         type: string
       shipAddress:
+        example: 6597 Westheimer Rd
         type: string
       shipCity:
+        example: Billings
         type: string
       shipCountry:
+        example: United States
         type: string
       shipName:
+        example: Servientrega
         type: string
       shipPostalCode:
+        example: "63104"
         type: string
       shippedDate:
+        example: "1990-01-04"
         type: string
       shipperID:
+        example: 9cc1g36t-6537-4d10-11fs-771may9224vv
         type: string
     type: object
-  models.OrderProductCreate:
+  schemas.OrderProduct:
     properties:
       discount:
+        example: 2400
         type: number
       orderID:
+        example: 9cc1g36t-6537-4d10-11fs-771may9224vv
         type: string
       productID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       quantity:
+        example: 5
         type: integer
       unitPrice:
+        example: 32400
         type: number
     type: object
-  models.OrderProductResponse:
+  schemas.OrderProductResponse:
     properties:
       discount:
+        example: 2400
         type: number
+      id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
+        type: string
       orderID:
+        example: 9cc1g36t-6537-4d10-11fs-771may9224vv
         type: string
       productID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       quantity:
+        example: 5
         type: integer
       unitPrice:
+        example: 32400
         type: number
     type: object
-  models.OrderResponse:
+  schemas.OrderResponse:
     properties:
       customerID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       id:
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         type: string
       orderDate:
+        example: "1990-01-02"
         type: string
       requiredDate:
+        example: "1990-01-02"
         type: string
       shipAddress:
+        example: 6597 Westheimer Rd
         type: string
       shipCity:
+        example: Billings
         type: string
       shipCountry:
+        example: United States
         type: string
       shipName:
+        example: not null
         type: string
       shipPostalCode:
+        example: "63104"
         type: string
       shippedDate:
+        example: "1990-01-04"
         type: string
       shipperID:
+        example: 9cc1g36t-6537-4d10-11fs-771may9224vv
         type: string
     type: object
-  models.PaymentCreate:
+  schemas.Payment:
     properties:
       creditCardID:
-        type: string
-      id:
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         type: string
       orderID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
     type: object
-  models.PaymentResponse:
+  schemas.PaymentResponse:
     properties:
       creditCardID:
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         type: string
       id:
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         type: string
       orderID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
     type: object
-  models.ProductCreate:
+  schemas.Product:
     properties:
       categoryID:
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         type: string
       discontinued:
+        example: false
         type: boolean
-      id:
-        type: string
       productName:
+        example: Product 1
         type: string
       quantity:
+        example: 10
         type: integer
       quantityPerUnit:
+        example: "2"
         type: string
       reorderLevel:
+        example: 1
         type: integer
       supplierID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       unitsInStock:
+        example: 10
         type: integer
       unitsOnOrder:
+        example: 3
         type: integer
     type: object
-  models.ProductResponse:
+  schemas.ProductResponse:
     properties:
       categoryID:
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         type: string
       discontinued:
+        example: false
         type: boolean
       id:
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         type: string
       productName:
+        example: Product 1
         type: string
       quantity:
+        example: 10
         type: integer
       quantityPerUnit:
+        example: "32400"
         type: string
       reorderLevel:
+        example: 1
         type: integer
       supplierID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       unitsInStock:
+        example: 10
         type: integer
       unitsOnOrder:
+        example: 3
         type: integer
     type: object
-  models.ShipperCreate:
+  schemas.Shipper:
     properties:
       companyName:
-        type: string
-      id:
+        example: Servientrega
         type: string
       phone:
+        example: "6697901"
         type: string
     type: object
-  models.ShipperResponse:
+  schemas.ShipperResponse:
     properties:
       companyName:
+        example: Servientrega
         type: string
       id:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       phone:
+        example: "6697901"
         type: string
     type: object
-  models.SubcategoryCreate:
+  schemas.Subcategory:
     properties:
-      active:
-        type: boolean
       categoryID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       description:
-        type: string
-      id:
+        example: Description about subcategory 1
         type: string
       subCategoryName:
+        example: Subcategory 1
         type: string
     type: object
-  models.SubcategoryResponse:
+  schemas.SubcategoryResponse:
     properties:
-      active:
-        type: boolean
       categoryID:
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         type: string
       description:
+        example: Description about subcategory 1
         type: string
       id:
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         type: string
       subCategoryName:
+        example: Subcategory 1
         type: string
     type: object
-  models.SupplierCreate:
+  schemas.Supplier:
     properties:
       address:
+        example: 49 Spring St
         type: string
       city:
+        example: Billings
         type: string
       companyName:
+        example: Arthur Clark
         type: string
       country:
+        example: United States
         type: string
       homePage:
-        type: string
-      id:
+        example: arthur.clark.com
         type: string
       phone:
+        example: "6475240"
         type: string
       postalCode:
+        example: "63104"
         type: string
     type: object
-  models.SupplierResponse:
+  schemas.SupplierResponse:
     properties:
       address:
+        example: 49 Spring St
         type: string
       city:
+        example: Billings
         type: string
       companyName:
+        example: Arthur Clark
         type: string
       country:
+        example: United States
         type: string
       homePage:
+        example: arthur.clark.com
         type: string
       id:
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         type: string
       phone:
+        example: "6475240"
         type: string
       postalCode:
+        example: "63104"
         type: string
     type: object
+host: go-rest-api.onrender.com
 info:
   contact:
     email: mario.diaz@correounivalle.edu.co
@@ -366,7 +472,7 @@ info:
   title: go-rest-api
   version: "1"
 paths:
-  /go-rest-api/categories:
+  /categories:
     get:
       consumes:
       - application/json
@@ -378,13 +484,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CategoryResponse'
+              $ref: '#/definitions/schemas.CategoryResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Categories
+      tags:
+      - Categories
     post:
       consumes:
       - application/json
@@ -395,27 +503,29 @@ paths:
         name: category
         required: true
         schema:
-          $ref: '#/definitions/models.CategoryCreate'
+          $ref: '#/definitions/schemas.Category'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.CategoryResponse'
+            $ref: '#/definitions/schemas.CategoryResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Category
-  /go-rest-api/categories/{id}:
+      tags:
+      - Categories
+  /categories/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a category by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Category ID
+      - description: Category ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -430,13 +540,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete Category by id
+      tags:
+      - Categories
     patch:
       consumes:
       - application/json
       description: Update a category by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Category ID
+      - description: Category ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -447,13 +559,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.CategoryResponse'
+            $ref: '#/definitions/schemas.CategoryResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Category by id
-  /go-rest-api/categories/active:
+      tags:
+      - Categories
+  /categories/active:
     get:
       consumes:
       - application/json
@@ -465,14 +579,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CategoryResponse'
+              $ref: '#/definitions/schemas.CategoryResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all active Categories
-  /go-rest-api/creditcard:
+      tags:
+      - Categories
+  /creditcard:
     get:
       consumes:
       - application/json
@@ -484,13 +600,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CreditCardResponse'
+              $ref: '#/definitions/schemas.CreditCardResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all SearchCreditCards
+      tags:
+      - CreditCards
     post:
       consumes:
       - application/json
@@ -501,27 +619,29 @@ paths:
         name: creditcard
         required: true
         schema:
-          $ref: '#/definitions/models.CreditCardCreate'
+          $ref: '#/definitions/schemas.CreditCard'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.SubcategoryResponse'
+            $ref: '#/definitions/schemas.CreditCardResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create creditcard
-  /go-rest-api/creditcard/{id}:
+      tags:
+      - CreditCards
+  /creditcard/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a credit card by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: CreditCard ID
+      - description: CreditCard ID
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         in: path
         name: id
         required: true
@@ -536,13 +656,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete CreditCard by id
+      tags:
+      - CreditCards
     get:
       consumes:
       - application/json
       description: Search CreditCard by id in the DataBase
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: CreditCard ID
+      - description: CreditCard ID
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         in: path
         name: id
         required: true
@@ -554,20 +676,22 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CreditCardResponse'
+              $ref: '#/definitions/schemas.CreditCardResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search CreditCard by id
+      tags:
+      - CreditCards
     patch:
       consumes:
       - application/json
       description: Update a credit card by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: CreditCard ID
+      - description: CreditCard ID
+        example: 5cc1f36f-1287-4c88-63fb-601feb9634be
         in: path
         name: id
         required: true
@@ -578,13 +702,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.CreditCardResponse'
+            $ref: '#/definitions/schemas.CreditCardResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update CreditCard by id
-  /go-rest-api/customers:
+      tags:
+      - CreditCards
+  /customers:
     get:
       consumes:
       - application/json
@@ -596,13 +722,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CustomerResponse'
+              $ref: '#/definitions/schemas.CustomerResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Customers
+      tags:
+      - Customers
     post:
       consumes:
       - application/json
@@ -613,27 +741,29 @@ paths:
         name: customer
         required: true
         schema:
-          $ref: '#/definitions/models.CustomerCreate'
+          $ref: '#/definitions/schemas.Customer'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.CustomerResponse'
+            $ref: '#/definitions/schemas.CustomerResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Customer
-  /go-rest-api/customers/{id}:
+      tags:
+      - Customers
+  /customers/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a customer by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Customer ID
+      - description: Customer ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -648,13 +778,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete Customer by id
+      tags:
+      - Customers
     get:
       consumes:
       - application/json
       description: Search Customer by id in the DataBase
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Customer ID
+      - description: Customer ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -666,20 +798,22 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.CategoryResponse'
+              $ref: '#/definitions/schemas.CustomerResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Customer by id
+      tags:
+      - Customers
     patch:
       consumes:
       - application/json
       description: Update a customer by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Customer ID
+      - description: Customer ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -690,13 +824,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.CustomerResponse'
+            $ref: '#/definitions/schemas.CustomerResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Customer by id
-  /go-rest-api/login:
+      tags:
+      - Customers
+  /login:
     post:
       consumes:
       - application/json
@@ -707,27 +843,29 @@ paths:
         name: login
         required: true
         schema:
-          $ref: '#/definitions/models.LoginCreate'
+          $ref: '#/definitions/schemas.Login'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.LoginResponse'
+            $ref: '#/definitions/schemas.LoginResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Login
-  /go-rest-api/login/{id}:
+      tags:
+      - Login
+  /login/{id}:
     get:
       consumes:
       - application/json
       description: Search Login by customer id in the DataBase
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Login ID
+      - description: Login ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -739,21 +877,23 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.LoginResponse'
+              $ref: '#/definitions/schemas.LoginResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Login by Customer id
-  /go-rest-api/login/date/{date}:
+      tags:
+      - Login
+  /login/date/{date}:
     get:
       consumes:
       - application/json
       description: Search Login by date in the DataBase
       parameters:
-      - default: "2006-01-02"
-        description: Login date
+      - description: Login date
+        example: "2006-01-02"
         in: path
         name: date
         required: true
@@ -765,14 +905,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.LoginResponse'
+              $ref: '#/definitions/schemas.LoginResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Login by Date
-  /go-rest-api/orderproducts:
+      tags:
+      - Login
+  /orderproducts:
     get:
       consumes:
       - application/json
@@ -784,13 +926,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.OrderProductResponse'
+              $ref: '#/definitions/schemas.OrderProductResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all OrderProducts
+      tags:
+      - OrderProducts
     post:
       consumes:
       - application/json
@@ -801,27 +945,29 @@ paths:
         name: orderproduct
         required: true
         schema:
-          $ref: '#/definitions/models.OrderProductCreate'
+          $ref: '#/definitions/schemas.OrderProduct'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.OrderProductResponse'
+            $ref: '#/definitions/schemas.OrderProductResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create OrderProduct
-  /go-rest-api/orderproducts/{id}:
+      tags:
+      - OrderProducts
+  /orderproducts/{id}:
     get:
       consumes:
       - application/json
       description: Search OrderProduct by id in the DataBase
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: OrderProduct ID
+      - description: OrderProduct ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -833,14 +979,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.OrderProductResponse'
+              $ref: '#/definitions/schemas.OrderProductResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search OrderProduct by id
-  /go-rest-api/orders:
+      tags:
+      - OrderProducts
+  /orders:
     get:
       consumes:
       - application/json
@@ -852,13 +1000,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.OrderResponse'
+              $ref: '#/definitions/schemas.OrderResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Orders
+      tags:
+      - Orders
     post:
       consumes:
       - application/json
@@ -869,20 +1019,22 @@ paths:
         name: order
         required: true
         schema:
-          $ref: '#/definitions/models.OrderCreate'
+          $ref: '#/definitions/schemas.Order'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.OrderResponse'
+            $ref: '#/definitions/schemas.OrderResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Order
-  /go-rest-api/payments:
+      tags:
+      - Orders
+  /payments:
     post:
       consumes:
       - application/json
@@ -893,27 +1045,29 @@ paths:
         name: payment
         required: true
         schema:
-          $ref: '#/definitions/models.PaymentCreate'
+          $ref: '#/definitions/schemas.Payment'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.PaymentResponse'
+            $ref: '#/definitions/schemas.PaymentResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Payment
-  /go-rest-api/payments/{id}:
+      tags:
+      - Payments
+  /payments/{id}:
     get:
       consumes:
       - application/json
       description: Search Payment by id in the DataBase
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Payment ID
+      - description: Payment ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         in: path
         name: id
         required: true
@@ -925,21 +1079,23 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.PaymentResponse'
+              $ref: '#/definitions/schemas.PaymentResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Payment by Customer id
-  /go-rest-api/payments/date/{date}:
+      tags:
+      - Payments
+  /payments/date/{date}:
     get:
       consumes:
       - application/json
       description: Search Payments by date in the DataBase
       parameters:
-      - default: "2006-01-02"
-        description: Payment date
+      - description: Payment date
+        example: "2006-01-02"
         in: path
         name: date
         required: true
@@ -951,14 +1107,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.PaymentResponse'
+              $ref: '#/definitions/schemas.PaymentResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search Payments by Date
-  /go-rest-api/products:
+      tags:
+      - Payments
+  /products:
     get:
       consumes:
       - application/json
@@ -970,13 +1128,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.ProductResponse'
+              $ref: '#/definitions/schemas.ProductResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Products
+      tags:
+      - Products
     post:
       consumes:
       - application/json
@@ -987,27 +1147,29 @@ paths:
         name: product
         required: true
         schema:
-          $ref: '#/definitions/models.ProductCreate'
+          $ref: '#/definitions/schemas.Product'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.ProductResponse'
+            $ref: '#/definitions/schemas.ProductResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Product
-  /go-rest-api/products/{id}:
+      tags:
+      - Products
+  /products/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a product by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Product ID
+      - description: Product ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634x
         in: path
         name: id
         required: true
@@ -1022,13 +1184,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete a Product by id
+      tags:
+      - Products
     patch:
       consumes:
       - application/json
       description: Update a product by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Product ID
+      - description: Product ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634x
         in: path
         name: id
         required: true
@@ -1039,13 +1203,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.ProductResponse'
+            $ref: '#/definitions/schemas.ProductResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Product by id
-  /go-rest-api/products/active:
+      tags:
+      - Products
+  /products/active:
     get:
       consumes:
       - application/json
@@ -1057,14 +1223,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.ProductResponse'
+              $ref: '#/definitions/schemas.ProductResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all active Products
-  /go-rest-api/shippers:
+      tags:
+      - Products
+  /shippers:
     get:
       consumes:
       - application/json
@@ -1076,13 +1244,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.ShipperResponse'
+              $ref: '#/definitions/schemas.ShipperResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Shippers
+      tags:
+      - Shippers
     post:
       consumes:
       - application/json
@@ -1093,27 +1263,29 @@ paths:
         name: shipper
         required: true
         schema:
-          $ref: '#/definitions/models.ShipperCreate'
+          $ref: '#/definitions/schemas.Shipper'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.ShipperResponse'
+            $ref: '#/definitions/schemas.ShipperResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Shipper
-  /go-rest-api/shippers/{id}:
+      tags:
+      - Shippers
+  /shippers/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a shipper by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Shipper ID
+      - description: Shipper ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -1128,13 +1300,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete Shipper by id
+      tags:
+      - Shippers
     patch:
       consumes:
       - application/json
       description: Update a shipper by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Shipper ID
+      - description: Shipper ID
+        example: 5dd1f36f-1627-4c88-98fb-601feb9634be
         in: path
         name: id
         required: true
@@ -1145,13 +1319,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.ShipperResponse'
+            $ref: '#/definitions/schemas.ShipperResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Shipper by id
-  /go-rest-api/subcategories:
+      tags:
+      - Shippers
+  /subcategories:
     get:
       consumes:
       - application/json
@@ -1163,13 +1339,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.SubcategoryResponse'
+              $ref: '#/definitions/schemas.SubcategoryResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Subcategories
+      tags:
+      - Subcategories
     post:
       consumes:
       - application/json
@@ -1180,27 +1358,29 @@ paths:
         name: subcategory
         required: true
         schema:
-          $ref: '#/definitions/models.SubcategoryCreate'
+          $ref: '#/definitions/schemas.Subcategory'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.SubcategoryResponse'
+            $ref: '#/definitions/schemas.SubcategoryResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Subcategory
-  /go-rest-api/subcategories/{id}:
+      tags:
+      - Subcategories
+  /subcategories/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a subcategory by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Subcategory ID
+      - description: Subcategory ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         in: path
         name: id
         required: true
@@ -1215,13 +1395,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete a Subcategory by id
+      tags:
+      - Subcategories
     patch:
       consumes:
       - application/json
       description: Update a subcategory by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Subcategory ID
+      - description: Subcategory ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634xx
         in: path
         name: id
         required: true
@@ -1232,13 +1414,15 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.SubcategoryResponse'
+            $ref: '#/definitions/schemas.SubcategoryResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Subcategory by id
-  /go-rest-api/subcategories/active:
+      tags:
+      - Subcategories
+  /subcategories/active:
     get:
       consumes:
       - application/json
@@ -1250,14 +1434,16 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.SubcategoryResponse'
+              $ref: '#/definitions/schemas.SubcategoryResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all active Subcategories
-  /go-rest-api/suppliers:
+      tags:
+      - Subcategories
+  /suppliers:
     get:
       consumes:
       - application/json
@@ -1269,13 +1455,15 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/models.SupplierResponse'
+              $ref: '#/definitions/schemas.SupplierResponse'
             type: array
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Search all Suppliers
+      tags:
+      - Suppliers
     post:
       consumes:
       - application/json
@@ -1286,27 +1474,29 @@ paths:
         name: supplier
         required: true
         schema:
-          $ref: '#/definitions/models.SupplierCreate'
+          $ref: '#/definitions/schemas.Supplier'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.SupplierResponse'
+            $ref: '#/definitions/schemas.SupplierResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Create Supplier
-  /go-rest-api/suppliers/{id}:
+      tags:
+      - Suppliers
+  /suppliers/{id}:
     delete:
       consumes:
       - application/json
       description: Delete a supplier by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Supplier ID
+      - description: Supplier ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634x
         in: path
         name: id
         required: true
@@ -1321,13 +1511,15 @@ paths:
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Delete Supplier by id
+      tags:
+      - Suppliers
     patch:
       consumes:
       - application/json
       description: Update a supplier by id
       parameters:
-      - default: cabckbalgaLJHALncas
-        description: Supplier ID
+      - description: Supplier ID
+        example: 2ld1f12f-2227-8s08-18cc-222fdb9634x
         in: path
         name: id
         required: true
@@ -1338,10 +1530,12 @@ paths:
         "204":
           description: No Content
           schema:
-            $ref: '#/definitions/models.SupplierResponse'
+            $ref: '#/definitions/schemas.SupplierResponse'
         "404":
           description: Can not find objects
           schema:
             $ref: '#/definitions/models.APIError'
       summary: Update Supplier by id
+      tags:
+      - Suppliers
 swagger: "2.0"

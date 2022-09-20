@@ -10,17 +10,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// @BasePath /api/v1
-
 // CreateSubcategory godoc
 // @Summary Create Subcategory
 // @Description Create a Subcategory
 // @Accept  json
 // @Produce  json
-// @Param subcategory body models.SubcategoryCreate true "Create a subcategory"
-// @Success 200 {object} models.SubcategoryResponse
+// @Tags Subcategories
+// @Param subcategory body schemas.Subcategory true "Create a subcategory"
+// @Success 200 {object} schemas.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/subcategories [post]
+// @Router /subcategories [post]
 func CreateSubcategory(c *gin.Context) {
 
 	var createsubcategory models.SubcategoryCreate
@@ -40,9 +39,10 @@ func CreateSubcategory(c *gin.Context) {
 // @Description Search all subcatagories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.SubcategoryResponse
+// @Tags Subcategories
+// @Success 200 {object} []schemas.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/subcategories [get]
+// @Router /subcategories [get]
 func SearchSubcategories(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchSubcategories())
@@ -53,9 +53,10 @@ func SearchSubcategories(c *gin.Context) {
 // @Description Search all active categories in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.SubcategoryResponse
+// @Tags Subcategories
+// @Success 200 {object} []schemas.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/subcategories/active [get]
+// @Router /subcategories/active [get]
 func SearchActiveSubcategory(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchSubcategoriesActive())
@@ -66,10 +67,11 @@ func SearchActiveSubcategory(c *gin.Context) {
 // @Description Update a subcategory by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Subcategory ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.SubcategoryResponse
+// @Tags Subcategories
+// @Param id path string true "Subcategory ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
+// @Success 204 {object} schemas.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/subcategories/{id} [patch]
+// @Router /subcategories/{id} [patch]
 func UpdateSubcategory(c *gin.Context) {
 	var updatesubcategory models.SubcategoryBase
 
@@ -97,10 +99,11 @@ func UpdateSubcategory(c *gin.Context) {
 // @Description Delete a subcategory by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Subcategory ID" default(cabckbalgaLJHALncas)
+// @Tags Subcategories
+// @Param id path string true "Subcategory ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/subcategories/{id} [delete]
+// @Router /subcategories/{id} [delete]
 func DeleteSubcategoty(c *gin.Context) {
 	id := c.Param("id")
 

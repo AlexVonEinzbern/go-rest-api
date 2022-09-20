@@ -11,17 +11,16 @@ import (
 
 //TODO: Implement CreateOrderProduct
 
-// @BasePath /api/v1
-
 // CreateOrderProduct godoc
 // @Summary Create OrderProduct
 // @Description Create a OrderProduct
 // @Accept  json
 // @Produce  json
-// @Param orderproduct body models.OrderProductCreate true "OrderProduct type"
-// @Success 200 {object} models.OrderProductResponse
+// @Tags OrderProducts
+// @Param orderproduct body schemas.OrderProduct true "OrderProduct type"
+// @Success 200 {object} schemas.OrderProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/orderproducts [post]
+// @Router /orderproducts [post]
 func CreateOrderProduct(c *gin.Context) {
 
 	var createorderproduct models.OrderProductCreate
@@ -43,9 +42,10 @@ func CreateOrderProduct(c *gin.Context) {
 // @Description Search all orderproducts in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.OrderProductResponse
+// @Tags OrderProducts
+// @Success 200 {object} []schemas.OrderProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/orderproducts [get]
+// @Router /orderproducts [get]
 func SearchOrderProducts(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchOrderProducts())
@@ -58,10 +58,11 @@ func SearchOrderProducts(c *gin.Context) {
 // @Description Search OrderProduct by id in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path string true "OrderProduct ID" default(cabckbalgaLJHALncas)
-// @Success 200 {object} []models.OrderProductResponse
+// @Tags OrderProducts
+// @Param id path string true "OrderProduct ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 200 {object} []schemas.OrderProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/orderproducts/{id} [get]
+// @Router /orderproducts/{id} [get]
 func SearchOrderProduct(c *gin.Context) {
 
 	id := c.Param("id")

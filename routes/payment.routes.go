@@ -11,17 +11,16 @@ import (
 
 //TODO: Implement CreatePayment
 
-// @BasePath /api/v1
-
 // CreatePayment godoc
 // @Summary Create Payment
 // @Description Create a Payment
 // @Accept  json
 // @Produce  json
-// @Param payment body models.PaymentCreate true "Payment type"
-// @Success 200 {object} models.PaymentResponse
+// @Tags Payments
+// @Param payment body schemas.Payment true "Payment type"
+// @Success 200 {object} schemas.PaymentResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/payments [post]
+// @Router /payments [post]
 func CreatePayment(c *gin.Context) {
 
 	var createpayment models.PaymentCreate
@@ -43,10 +42,11 @@ func CreatePayment(c *gin.Context) {
 // @Description Search Payment by id in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Payment ID" default(cabckbalgaLJHALncas)
-// @Success 200 {object} []models.PaymentResponse
+// @Tags Payments
+// @Param id path string true "Payment ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
+// @Success 200 {object} []schemas.PaymentResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/payments/{id} [get]
+// @Router /payments/{id} [get]
 func SearchPayment(c *gin.Context) {
 
 	id := c.Param("id")
@@ -68,10 +68,11 @@ func SearchPayment(c *gin.Context) {
 // @Description Search Payments by date in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param date path string true "Payment date" default(2006-01-02)
-// @Success 200 {object} []models.PaymentResponse
+// @Tags Payments
+// @Param date path string true "Payment date" example(2006-01-02)
+// @Success 200 {object} []schemas.PaymentResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/payments/date/{date} [get]
+// @Router /payments/date/{date} [get]
 func SearchPaymentDate(c *gin.Context) {
 
 	date := c.Param("date")

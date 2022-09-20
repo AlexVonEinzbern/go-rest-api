@@ -20,13 +20,7 @@ type Supplier struct {
 }
 
 type SupplierCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	SupplierBase
-}
-
-type SupplierResponse struct {
-	SupplierBase
-	ID string
 }
 
 // TableName overrides the table name used by Supplier to `supplier`

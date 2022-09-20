@@ -18,13 +18,7 @@ type Category struct {
 }
 
 type CategoryCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	CategoryBase
-}
-
-type CategoryResponse struct {
-	CategoryBase
-	ID string
 }
 
 // TableName overrides the table name used by Category to `category`

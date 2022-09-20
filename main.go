@@ -10,21 +10,21 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// @host      go-rest-api.onrender.com
+// @BasePath /api/v1
 // @title go-rest-api
 // @version 1
 // @description ecommerce api-rest with basic CRUD operations (Create, Read, Update and Delete) products, suppliers, etc. Manage automatically invoice and shipping operations
 // @termsOfService http://swagger.io/terms/
-
 // @contact.name AlexVonEinzbern
 // @contact.url https://github.com/AlexVonEinzbern
 // @contact.email mario.diaz@correounivalle.edu.co
-
 // @license.name Apache 2.0
 
 func setupRouter() *gin.Engine {
 	db.Migrate()
 	r := gin.Default()
-	restapi := r.Group("/go-rest-api")
+	restapi := r.Group("/api/v1")
 	{
 		subcategories := restapi.Group("/subcategories")
 		{

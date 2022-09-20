@@ -15,13 +15,7 @@ type Shipper struct {
 }
 
 type ShipperCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	ShipperBase
-}
-
-type ShipperResponse struct {
-	ShipperBase
-	ID string
 }
 
 // TableName overrides the table name used by Shipper to `shipper`

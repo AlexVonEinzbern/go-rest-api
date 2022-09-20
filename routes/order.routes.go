@@ -12,17 +12,16 @@ import (
 
 //TODO: Implement CreateOrder
 
-// @BasePath /api/v1
-
 // CreateOrder godoc
 // @Summary Create Order
 // @Description Create a Order
 // @Accept  json
 // @Produce  json
-// @Param order body models.OrderCreate true "Order type"
-// @Success 200 {object} models.OrderResponse
+// @Tags Orders
+// @Param order body schemas.Order true "Order type"
+// @Success 200 {object} schemas.OrderResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/orders [post]
+// @Router /orders [post]
 func CreateOrder(c *gin.Context) {
 
 	var createorder models.OrderCreate
@@ -44,9 +43,10 @@ func CreateOrder(c *gin.Context) {
 // @Description Search all orders in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.OrderResponse
+// @Tags Orders
+// @Success 200 {object} []schemas.OrderResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/orders [get]
+// @Router /orders [get]
 func SearchOrders(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchOrders())
@@ -59,8 +59,9 @@ func SearchOrders(c *gin.Context) {
 // @Description Update a order by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Order ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.OrderResponse
+// @Tags Orders
+// @Param id path string true "Order ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
+// @Success 204 {object} schemas.OrderResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/orders/{id} [patch]
 // func UpdateOrder(c *gin.Context) {
@@ -92,7 +93,7 @@ func SearchOrders(c *gin.Context) {
 // @Description Delete a order by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Order ID" default(cabckbalgaLJHALncas)
+// @Param id path string true "Order ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /go-rest-api/orders/{id} [delete]

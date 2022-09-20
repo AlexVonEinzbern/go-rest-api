@@ -10,17 +10,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// @BasePath /api/v1
-
 // CreateProduct godoc
 // @Summary Create Product
 // @Description Create a Product
 // @Accept  json
 // @Produce  json
-// @Param product body models.ProductCreate true "Product type"
-// @Success 200 {object} models.ProductResponse
+// @Tags Products
+// @Param product body schemas.Product true "Product type"
+// @Success 200 {object} schemas.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/products [post]
+// @Router /products [post]
 func CreateProduct(c *gin.Context) {
 
 	var createproduct models.ProductCreate
@@ -40,9 +39,10 @@ func CreateProduct(c *gin.Context) {
 // @Description Search all products in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.ProductResponse
+// @Tags Products
+// @Success 200 {object} []schemas.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/products [get]
+// @Router /products [get]
 func SearchProducts(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchProducts())
@@ -53,9 +53,10 @@ func SearchProducts(c *gin.Context) {
 // @Description Search all active products in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.ProductResponse
+// @Tags Products
+// @Success 200 {object} []schemas.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/products/active [get]
+// @Router /products/active [get]
 func SearchActiveProducts(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchProductsActive())
@@ -66,10 +67,11 @@ func SearchActiveProducts(c *gin.Context) {
 // @Description Update a product by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Product ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.ProductResponse
+// @Tags Products
+// @Param id path string true "Product ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
+// @Success 204 {object} schemas.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/products/{id} [patch]
+// @Router /products/{id} [patch]
 func UpdateProduct(c *gin.Context) {
 	var updateproduct models.ProductBase
 
@@ -97,10 +99,11 @@ func UpdateProduct(c *gin.Context) {
 // @Description Delete a product by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Product ID" default(cabckbalgaLJHALncas)
+// @Tags Products
+// @Param id path string true "Product ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/products/{id} [delete]
+// @Router /products/{id} [delete]
 func DeleteProduct(c *gin.Context) {
 	id := c.Param("id")
 

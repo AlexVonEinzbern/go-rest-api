@@ -12,17 +12,16 @@ import (
 
 //TODO: Implement CreateCustomer
 
-// @BasePath /api/v1
-
 // CreateCustomer godoc
 // @Summary Create Customer
 // @Description Create a Customer
 // @Accept  json
 // @Produce  json
-// @Param customer body models.CustomerCreate true "Customer type"
-// @Success 200 {object} models.CustomerResponse
+// @Tags Customers
+// @Param customer body schemas.Customer true "Customer type"
+// @Success 200 {object} schemas.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/customers [post]
+// @Router /customers [post]
 func CreateCustomer(c *gin.Context) {
 
 	var createcustomer models.CustomerCreate
@@ -44,9 +43,10 @@ func CreateCustomer(c *gin.Context) {
 // @Description Search all customers in the DataBase
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} []models.CustomerResponse
+// @Tags Customers
+// @Success 200 {object} []schemas.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/customers [get]
+// @Router /customers [get]
 func SearchCustomers(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, controllers.SearchCustomers())
@@ -59,17 +59,18 @@ func SearchCustomers(c *gin.Context) {
 // @Description Search Customer by id in the DataBase
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Customer ID" default(cabckbalgaLJHALncas)
-// @Success 200 {object} []models.CategoryResponse
+// @Tags Customers
+// @Param id path string true "Customer ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 200 {object} []schemas.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/customers/{id} [get]
+// @Router /customers/{id} [get]
 func SearchCustomer(c *gin.Context) {
 
-    id := c.Param("id")
+	id := c.Param("id")
 
-    customer, err := controllers.SearchCustomer(id)
+	customer, err := controllers.SearchCustomer(id)
 
-    if err != nil {
+	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, models.APIError{ErrorCode: 404, ErrorMessage: "Not found"})
 		return
 	}
@@ -84,10 +85,11 @@ func SearchCustomer(c *gin.Context) {
 // @Description Update a customer by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Customer ID" default(cabckbalgaLJHALncas)
-// @Success 204 {object} models.CustomerResponse
+// @Tags Customers
+// @Param id path string true "Customer ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Success 204 {object} schemas.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/customers/{id} [patch]
+// @Router /customers/{id} [patch]
 func UpdateCustomer(c *gin.Context) {
 	var updatecustomer models.CustomerBase
 
@@ -117,10 +119,11 @@ func UpdateCustomer(c *gin.Context) {
 // @Description Delete a customer by id
 // @Accept  json
 // @Produce  json
-// @Param id path string true "Customer ID" default(cabckbalgaLJHALncas)
+// @Tags Customers
+// @Param id path string true "Customer ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
 // @Success 204
 // @Failure 404 {object} models.APIError "Can not find objects"
-// @Router /go-rest-api/customers/{id} [delete]
+// @Router /customers/{id} [delete]
 func DeleteCustomer(c *gin.Context) {
 	id := c.Param("id")
 

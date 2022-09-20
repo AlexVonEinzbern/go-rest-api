@@ -22,13 +22,7 @@ type Product struct {
 }
 
 type ProductCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	ProductBase
-}
-
-type ProductResponse struct {
-	ProductBase
-	ID string
 }
 
 // TableName overrides the table name used by Product to `product`

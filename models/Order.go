@@ -27,13 +27,7 @@ type Order struct {
 }
 
 type OrderCreate struct {
-	ID string `gorm:"primaryKey; not null; unique_index"`
 	OrderBase
-}
-
-type OrderResponse struct {
-	OrderBase
-	ID string
 }
 
 // TableName overrides the table name used by Order to `order`

@@ -20,12 +20,6 @@ type OrderProductCreate struct {
 	OrderProductBase
 }
 
-type OrderProductResponse struct {
-	OrderProductBase
-	ProductID string
-	OrderID   string
-}
-
 // TableName overrides the table name used by OrderProduct to `order_product`
 func (OrderProduct) TableName() string {
 	return "order_product"
