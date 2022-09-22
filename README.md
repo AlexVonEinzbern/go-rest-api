@@ -46,7 +46,7 @@ docker run -it -p 8080:8080 --env-file=".env" go-rest-api
 docker run --add-host=host.docker.internal:host-gateway -it -p 8080:8080 --env-file=".env" go-rest-api
 ```
 ### Use the API
-[https://go-rest-api.onrender.com](https://go-rest-api.onrender.com)
+[https://go-rest-api.onrender.com](https://go-rest-api.onrender.com/api/v1)
 
 ## Documentation
 After the project is running, an interactive documentation created using `Swagger` can be visited on [http://localhost:8080/swagger/index.html#/](http://localhost:8080/swagger/index.html#/)
