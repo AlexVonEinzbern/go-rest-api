@@ -69,6 +69,7 @@ func SearchActiveCategory(c *gin.Context) {
 // @Produce  json
 // @Tags Categories
 // @Param id path string true "Category ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Param Category body schemas.Category true "Update category" 
 // @Success 204 {object} schemas.CategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /categories/{id} [patch]

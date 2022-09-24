@@ -61,6 +61,7 @@ func SearchSuppliers(c *gin.Context) {
 // @Produce  json
 // @Tags Suppliers
 // @Param id path string true "Supplier ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
+// @Param Supplier body schemas.Supplier true "Update Supplier"
 // @Success 204 {object} schemas.SupplierResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /suppliers/{id} [patch]

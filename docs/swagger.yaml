@@ -553,6 +553,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update category
+        in: body
+        name: Category
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Category'
       produces:
       - application/json
       responses:
@@ -696,6 +702,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update CreditCard
+        in: body
+        name: CreditCard
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.CreditCard'
       produces:
       - application/json
       responses:
@@ -818,6 +830,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update Customer
+        in: body
+        name: Customer
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Customer'
       produces:
       - application/json
       responses:
@@ -1197,6 +1215,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update Product
+        in: body
+        name: Product
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Product'
       produces:
       - application/json
       responses:
@@ -1313,6 +1337,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update Shipper
+        in: body
+        name: Shipper
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Shipper'
       produces:
       - application/json
       responses:
@@ -1408,6 +1438,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update Subcategory
+        in: body
+        name: Subcategory
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Subcategory'
       produces:
       - application/json
       responses:
@@ -1524,6 +1560,12 @@ paths:
         name: id
         required: true
         type: string
+      - description: Update Supplier
+        in: body
+        name: Supplier
+        required: true
+        schema:
+          $ref: '#/definitions/schemas.Supplier'
       produces:
       - application/json
       responses:

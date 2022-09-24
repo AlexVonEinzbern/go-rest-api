@@ -87,6 +87,7 @@ func SearchCustomer(c *gin.Context) {
 // @Produce  json
 // @Tags Customers
 // @Param id path string true "Customer ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Param Customer body schemas.Customer true "Update Customer"
 // @Success 204 {object} schemas.CustomerResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /customers/{id} [patch]

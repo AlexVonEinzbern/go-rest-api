@@ -69,6 +69,7 @@ func SearchActiveProducts(c *gin.Context) {
 // @Produce  json
 // @Tags Products
 // @Param id path string true "Product ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634x)
+// @Param Product body schemas.Product true "Update Product"
 // @Success 204 {object} schemas.ProductResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /products/{id} [patch]

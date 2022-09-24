@@ -69,6 +69,7 @@ func SearchActiveSubcategory(c *gin.Context) {
 // @Produce  json
 // @Tags Subcategories
 // @Param id path string true "Subcategory ID" example(2ld1f12f-2227-8s08-18cc-222fdb9634xx)
+// @Param Subcategory body schemas.Subcategory true "Update Subcategory"
 // @Success 204 {object} schemas.SubcategoryResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /subcategories/{id} [patch]

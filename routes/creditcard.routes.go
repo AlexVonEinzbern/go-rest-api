@@ -87,6 +87,7 @@ func SearchCreditCard(c *gin.Context) {
 // @Produce  json
 // @Tags CreditCards
 // @Param id path string true "CreditCard ID" example(5cc1f36f-1287-4c88-63fb-601feb9634be)
+// @Param CreditCard body schemas.CreditCard true "Update CreditCard"
 // @Success 204 {object} schemas.CreditCardResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /creditcard/{id} [patch]

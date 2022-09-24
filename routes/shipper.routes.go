@@ -61,6 +61,7 @@ func SearchShippers(c *gin.Context) {
 // @Produce  json
 // @Tags Shippers
 // @Param id path string true "Shipper ID" example(5dd1f36f-1627-4c88-98fb-601feb9634be)
+// @Param Shipper body schemas.Shipper true "Update Shipper"
 // @Success 204 {object} schemas.ShipperResponse
 // @Failure 404 {object} models.APIError "Can not find objects"
 // @Router /shippers/{id} [patch]
