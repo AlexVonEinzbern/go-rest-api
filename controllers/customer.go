@@ -12,15 +12,11 @@ import (
 //TODO: Implement CreateCustomer
 func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 
-	// parse the input string into a time.Time value
-	t, err := time.Parse("2006-01-02", createcustomer.Birthday)
-	if err != nil {
+	birthday, err := time.Parse("2006-01-02T15:04:05Z07:00", createcustomer.Birthday.Format("2006-01-02T15:04:05Z07:00"))
+	err != nil {
 		log.Fatal(err)
 	}
-
-	// convert the time.Time value to a string in the desired layout
-	date_birthday := t.Format("2006-01-02T15:04:05Z07:00")
-
+	
 	customer := models.Customer{
 		ID: utils.IdGenerator(),
 		CustomerBase: models.CustomerBase{
@@ -29,7 +25,7 @@ func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 			DNI:        createcustomer.DNI,
 			Address:    createcustomer.Address,
 			City:       createcustomer.City,
-			Birthday:   date_birthday,
+			Birthday:   birthday,
 			PostalCode: createcustomer.PostalCode,
 			Country:    createcustomer.Country,
 			Phone:      createcustomer.Phone,
@@ -55,7 +51,7 @@ func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 
 	log.Println("This is the record inserted: ", customer)
 
-	return customer
+	return CreateCustomer
 }
 
 //TODO: Implement SearchCustomers
