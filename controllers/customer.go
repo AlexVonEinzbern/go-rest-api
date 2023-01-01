@@ -13,10 +13,10 @@ import (
 func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 
 	birthday, err := time.Parse("2006-01-02T15:04:05Z07:00", createcustomer.Birthday.Format("2006-01-02T15:04:05Z07:00"))
-	err != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	customer := models.Customer{
 		ID: utils.IdGenerator(),
 		CustomerBase: models.CustomerBase{
