@@ -29,7 +29,7 @@ func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 			DNI:        createcustomer.DNI,
 			Address:    createcustomer.Address,
 			City:       createcustomer.City,
-			Birthday:   date_birtday,
+			Birthday:   date_birthday,
 			PostalCode: createcustomer.PostalCode,
 			Country:    createcustomer.Country,
 			Phone:      createcustomer.Phone,
