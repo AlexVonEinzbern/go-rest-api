@@ -51,7 +51,7 @@ func CreateCustomer(createcustomer models.CustomerCreate) models.Customer {
 
 	log.Println("This is the record inserted: ", customer)
 
-	return CreateCustomer
+	return customer
 }
 
 //TODO: Implement SearchCustomers
